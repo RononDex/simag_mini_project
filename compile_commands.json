@@ -1,0 +1,297 @@
+[
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/main.cpp.o -c /home/cobra/dev/simag/SimAg/main.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/main.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Context/App.cpp.o -c /home/cobra/dev/simag/SimAg/Context/App.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Context/App.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Context/ContextOpenGl.cpp.o -c /home/cobra/dev/simag/SimAg/Context/ContextOpenGl.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Context/ContextOpenGl.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Context/GlobalEnvironment.cpp.o -c /home/cobra/dev/simag/SimAg/Context/GlobalEnvironment.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Context/GlobalEnvironment.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/cc -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include  -o CMakeFiles/SimAg.dir/external/glad_gl.c.o -c /home/cobra/dev/simag/SimAg/external/glad_gl.c",
+  "file": "/home/cobra/dev/simag/SimAg/external/glad_gl.c"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/glm/detail/glm.cpp.o -c /home/cobra/dev/simag/SimAg/external/glm/detail/glm.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/glm/detail/glm.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui/imgui.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui/imgui.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui/imgui.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui/imgui_demo.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui/imgui_demo.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui/imgui_demo.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui/imgui_draw.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui/imgui_draw.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui/imgui_draw.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui/imgui_tables.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui/imgui_tables.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui/imgui_tables.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui/imgui_widgets.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui/imgui_widgets.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui/imgui_widgets.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui_glfw/imgui_impl_glfw.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui_glfw/imgui_impl_glfw.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui_glfw/imgui_impl_glfw.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/imgui_glfw/imgui_impl_opengl2.cpp.o -c /home/cobra/dev/simag/SimAg/external/imgui_glfw/imgui_impl_opengl2.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/imgui_glfw/imgui_impl_opengl2.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/stb_image.cpp.o -c /home/cobra/dev/simag/SimAg/external/stb_image.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/stb_image.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/tinyply.cpp.o -c /home/cobra/dev/simag/SimAg/external/tinyply.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/tinyply.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/external/tinyxml2.cpp.o -c /home/cobra/dev/simag/SimAg/external/tinyxml2.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/external/tinyxml2.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Grid/Grid.cpp.o -c /home/cobra/dev/simag/SimAg/Grid/Grid.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Grid/Grid.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/Camera.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/Camera.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/Camera.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/Framerate.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/Framerate.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/Framerate.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/GameCameraState.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/GameCameraState.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/GameCameraState.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/HelperDraw.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/HelperDraw.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/HelperDraw.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/HelperImGui.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/HelperImGui.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/HelperImGui.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/HelperReadPLY.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/HelperReadPLY.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/HelperReadPLY.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/Image.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/Image.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/Image.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/RenderingOldSchoolEffects.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/RenderingOldSchoolEffects.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/RenderingOldSchoolEffects.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Helper/Texture.cpp.o -c /home/cobra/dev/simag/SimAg/Helper/Texture.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Helper/Texture.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/CollisionCube.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/CollisionCube.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/CollisionCube.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/CollisionPlane.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/CollisionPlane.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/CollisionPlane.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/CollisionSphere.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/CollisionSphere.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/CollisionSphere.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/NeighborList.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/NeighborList.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/NeighborList.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/Particle.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/Particle.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/Particle.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/ParticleSystem.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystem.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystem.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/ParticleSystemContainer.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystemContainer.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystemContainer.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/ParticleSystemDraw.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystemDraw.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystemDraw.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/ParticleSystem/ParticleSystemState.cpp.o -c /home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystemState.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/ParticleSystem/ParticleSystemState.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskAssignment_Fireworks.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskAssignment_Fireworks.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskAssignment_Fireworks.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskAssignment_GravityPlanets.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskAssignment_GravityPlanets.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskAssignment_GravityPlanets.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskAssignment_Morph.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskAssignment_Morph.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskAssignment_Morph.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskBase.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskBase.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskBase.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskCollision.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskCollision.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskCollision.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskCollisionFloor.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskCollisionFloor.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskCollisionFloor.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskCreatePsFromImage.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskCreatePsFromImage.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskCreatePsFromImage.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskEmpty.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskEmpty.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskEmpty.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskEnqueuePS.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskEnqueuePS.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskEnqueuePS.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect02_MyFirstTask_Differentiation.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect02_MyFirstTask_Differentiation.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect02_MyFirstTask_Differentiation.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect03_Billiard.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect03_Billiard.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect03_Billiard.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect03_CarCollision.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect03_CarCollision.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect03_CarCollision.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect04_AddForce.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect04_AddForce.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect04_AddForce.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect04_CircularMotion_Integration.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect04_CircularMotion_Integration.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect04_CircularMotion_Integration.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect04_Pendula.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect04_Pendula.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect04_Pendula.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskLect05_Springs.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskLect05_Springs.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskLect05_Springs.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskMouseAddVelocity.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskMouseAddVelocity.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskMouseAddVelocity.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskPickParticle.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskPickParticle.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskPickParticle.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Tasks/TaskTools.cpp.o -c /home/cobra/dev/simag/SimAg/Tasks/TaskTools.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Tasks/TaskTools.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Integrator/IntegratorEuler.cpp.o -c /home/cobra/dev/simag/SimAg/Integrator/IntegratorEuler.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Integrator/IntegratorEuler.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Integrator/IntegratorEulerCromer.cpp.o -c /home/cobra/dev/simag/SimAg/Integrator/IntegratorEulerCromer.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Integrator/IntegratorEulerCromer.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Integrator/IntegratorLeapFrog.cpp.o -c /home/cobra/dev/simag/SimAg/Integrator/IntegratorLeapFrog.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Integrator/IntegratorLeapFrog.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Integrator/IntegratorRK2_Midpoint.cpp.o -c /home/cobra/dev/simag/SimAg/Integrator/IntegratorRK2_Midpoint.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Integrator/IntegratorRK2_Midpoint.cpp"
+},
+{
+  "directory": "/home/cobra/dev/simag/SimAg/build",
+  "command": "/usr/bin/c++ -DGLFW_INCLUDE_NONE -I/home/cobra/dev/simag/SimAg/./external -I/home/cobra/dev/simag/SimAg/../glfw/include -O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable -std=gnu++17 -o CMakeFiles/SimAg.dir/Integrator/IntegratorRK4.cpp.o -c /home/cobra/dev/simag/SimAg/Integrator/IntegratorRK4.cpp",
+  "file": "/home/cobra/dev/simag/SimAg/Integrator/IntegratorRK4.cpp"
+}
+]
