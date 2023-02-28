@@ -11,7 +11,7 @@ namespace Globals
 	static const int MAX_TASKS = 5;
 
 	// Graphics
-	static const int  USE_MULTISAMPLING_SAMPLES = 2; // 0 - disabled, otherwise 2,4,8,16; disable it, if your system is slow
+	static const int  USE_MULTISAMPLING_SAMPLES = 0; // 0 - disabled, otherwise 2,4,8,16; disable it, if your system is slow
 	static const bool FORCE_VSYNC = false;           // should be true for whole SimAg-course of FORCE_FRAMERATE must be set
 	static const int  FORCE_FRAMERATE = 60;          // -1 to disable, but please keep it as it is for SimAg
 

@@ -12,6 +12,7 @@
 #include "../Context/GlobalEnvironment.h"
 #include "../ParticleSystem/ParticleSystem.h"
 #include "../Helper/HelperDraw.h"
+#include "glm/ext/vector_float3.hpp"
 
 // Add more headers here if you want...
 
@@ -87,6 +88,7 @@ void TaskBase::imGui()
         std::cerr << "Test Button pressed\n"; // print to terminal
 
         // Add particle
+		particleSystem(0).add(glm::vec3(0, 0, 0), glm::vec3(1, 1, 0));
 
         // todo students
     }
