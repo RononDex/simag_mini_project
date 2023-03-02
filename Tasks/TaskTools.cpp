@@ -8,37 +8,60 @@
 #include "../Context/GlobalEnvironment.h"
 #include "../ParticleSystem/ParticleSystemContainer.h"
 #include "glm/ext/vector_float3.hpp"
+#include "glm/geometric.hpp"
 #include <glm/ext/scalar_constants.hpp>
 #include <glm/glm.hpp>
 
 namespace {
 void setVelocitiesRadial(ParticleSystem &ps) {
   for (auto &it : ps.states()) {
-    // todo students
+    glm::vec3 velocity = it.vel();
+    glm::vec3 pos = it.pos();
+    velocity.x = pos.x;
+    velocity.y = pos.y;
+    velocity.z = pos.z;
+    it.vel() = velocity;
   }
 }
 
 void setVelocitiesRadialNormalized(ParticleSystem &ps) {
+  setVelocitiesRadial(ps);
+
   for (auto &it : ps.states()) {
     // todo students
+    glm::vec3 normedVelocity = glm::normalize(it.vel());
+    it.vel() = normedVelocity;
   }
 }
 
 void setVelocitiesPerpendicular(ParticleSystem &ps) {
+  glm::vec3 zAxis = glm::vec3(0, 0, 1);
   for (auto &it : ps.states()) {
     // todo students
+    glm::vec3 pos = it.pos();
+    glm::vec3 radialVelocity = glm::cross(pos, zAxis);
+    it.vel() = radialVelocity;
   }
 }
 
 void setVelocitiesPerpendicularNormalized(ParticleSystem &ps) {
+  setVelocitiesPerpendicular(ps);
+
   for (auto &it : ps.states()) {
     // todo students
+    glm::vec3 normedVelocity = glm::normalize(it.vel());
+    it.vel() = normedVelocity;
   }
 }
 
 void invertVelocities(ParticleSystem &ps) {
   for (auto &it : ps.states()) {
-    // todo students
+    glm::vec3 velocity = it.vel();
+    velocity.x = -velocity.x;
+    velocity.y = -velocity.y;
+    velocity.z = -velocity.z;
+
+    it.vel() = velocity;
   }
 }
 
