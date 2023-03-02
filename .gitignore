@@ -3,6 +3,5 @@ x64/
 Data/
 build/
 buildLinux/
-CMakeLists.txt
 SimAg_SolutionToLecture.py
 .cache/
