@@ -105,7 +105,7 @@ namespace
         //app->pushDefaultTask<TaskEnqueuePS>();
 
         // Setup Fireworks
-        //app->pushDefaultTask<TaskAssignment_Fireworks>();
+        app->pushDefaultTask<TaskAssignment_Fireworks>();
         //app->pushDefaultTask<TaskLect04_AddForce>();
 
 

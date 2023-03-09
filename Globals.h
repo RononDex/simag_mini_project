@@ -16,7 +16,7 @@ namespace Globals
 	static const int  FORCE_FRAMERATE = 60;          // -1 to disable, but please keep it as it is for SimAg
 
 	// GUI
-	static const float GUI_FONT_SCALE = 2.0f; // 1.0f, 1.5f, 2.0f, 2.5f, ...
+	static const float GUI_FONT_SCALE = 1.0f; // 1.0f, 1.5f, 2.0f, 2.5f, ...
 	static const bool  GUI_ENABLE_FILE_STREAM_FOR_PS = false;
 	static const bool  GUI_ENABLE_FILE_MENU = false;
 	static const bool  GUI_ENABLE_DEBUG_MENU = false;
