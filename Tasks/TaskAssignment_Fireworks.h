@@ -25,4 +25,5 @@ class TaskAssignment_Fireworks : public CTask {
     int m_lifetimeCounter = 0;
     float m_maxSpeedX = 8.0f;
     bool m_exploded = false;
+    float m_rocketMass = 1.0f;
 };

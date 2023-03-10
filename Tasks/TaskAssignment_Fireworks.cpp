@@ -1,5 +1,6 @@
 #include "TaskAssignment_Fireworks.h"
 
+#include <functional>
 #include <glad/gl.h>
 #include <glm/ext/scalar_constants.hpp>
 #include <glm/glm.hpp>
@@ -52,6 +53,27 @@ void TaskAssignment_Fireworks::doWork() {
         float speedRange = 5;
         auto vel_rocket = ps.particle(0).vel();
         auto pos_rocket = ps.particle(0).pos();
+        glm::vec3 rocket_impulse =
+            glm::vec3(vel_rocket.x * m_rocketMass, vel_rocket.y * m_rocketMass,
+                      vel_rocket.z * m_rocketMass);
+
+        // Every particle has the same mass
+        // This ensures that the law of mass conservation is met
+        float mass_particle = m_rocketMass / m_createNParticles;
+
+        // First calculate the impulse that every particle inherits from the
+        // rocket
+        glm::vec3 inherited_impulse_particle =
+            glm::vec3(rocket_impulse.x / m_createNParticles,
+                      rocket_impulse.y / m_createNParticles,
+                      rocket_impulse.z / m_createNParticles);
+
+        // Translate the inherited impulse into a velocity, in order to follow
+        // the law of Conservation of Impulse
+        glm::vec3 inherited_vel_particle =
+            glm::vec3(inherited_impulse_particle.x / mass_particle,
+                      inherited_impulse_particle.y / mass_particle,
+                      inherited_impulse_particle.z / mass_particle);
 
         // remove rocket
         ps.clear();
@@ -63,11 +85,12 @@ void TaskAssignment_Fireworks::doWork() {
             float z_vel = randomNumberInRange(speedRange);
 
             ps.add(glm::vec3(pos_rocket.x, pos_rocket.y, pos_rocket.z),
-                   glm::vec3(x_vel + vel_rocket.x, y_vel + vel_rocket.y,
-                             z_vel + vel_rocket.z));
-            ps.add(pos_rocket,
-                   glm::vec3(-x_vel + vel_rocket.x, -y_vel + vel_rocket.y,
-                             -z_vel + vel_rocket.z));
+                   glm::vec3(x_vel + inherited_vel_particle.x,
+                             y_vel + inherited_vel_particle.y,
+                             z_vel + inherited_vel_particle.z));
+            ps.add(pos_rocket, glm::vec3(-x_vel + inherited_vel_particle.x,
+                                         -y_vel + inherited_vel_particle.y,
+                                         -z_vel + inherited_vel_particle.z));
         }
     }
 }
@@ -126,7 +149,8 @@ const char *TaskAssignment_Fireworks::toString() const {
 
     ss << "Description:"
        << "\n";
-    ss << "Launches a rocket from (0, 0, 0) and explodes after configured lifetime is reached"
+    ss << "Launches a rocket from (0, 0, 0) and explodes after configured "
+          "lifetime is reached"
        << "\n";
     ss << ""
        << "\n";
