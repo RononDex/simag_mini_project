@@ -102,6 +102,6 @@ void setDefaultTasks(App *app) {
     // app->pushDefaultTask<TaskLect04_AddForce>();
     //
     // Setup Morph
-    app->pushDefaultTask<TaskMouseAddVelocity>();
+    app->pushDefaultTask<TaskAssignment_Morph>();
 }
 } // namespace
