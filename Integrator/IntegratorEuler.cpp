@@ -26,6 +26,8 @@ void IntegratorEuler::step(
 		auto& f = *force;
 
 		// todo students
+        p = p + v * dt;
+        v = v + f / m * dt;
 		// position-update
 		// velocity-update
 

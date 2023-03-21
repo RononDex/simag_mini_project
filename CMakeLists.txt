@@ -27,10 +27,10 @@ if(UNIX AND NOT APPLE)
   #set(ADDITIONAL_LIBS dl m GL X11 pthread)
 
 # debug
-#  set(CMAKE_CXX_FLAGS "-g -Wall -Wextra")
+  set(CMAKE_CXX_FLAGS "-g -Wall -Wextra")
 # optimization
 #  set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra")
-  set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable")
+#  set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-unused-but-set-variable")
   
 # USE GCCmake 
 #  set(CMAKE_C_COMPILER "/usr/bin/gcc")

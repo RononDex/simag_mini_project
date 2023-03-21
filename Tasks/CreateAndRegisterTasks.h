@@ -102,6 +102,8 @@ void setDefaultTasks(App *app) {
     // app->pushDefaultTask<TaskLect04_AddForce>();
     //
     // Setup Morph
-    app->pushDefaultTask<TaskAssignment_Morph>();
+    app->pushDefaultTask<TaskPickParticle>();
+    app->pushDefaultTask<TaskLect05_Springs>();
+    app->pushDefaultTask<TaskLect04_AddForce>();
 }
 } // namespace
