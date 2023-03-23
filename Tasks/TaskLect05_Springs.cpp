@@ -75,7 +75,11 @@ void TaskLect05_Springs::generateScene1_rope() {
     // Set first and last particle as static
     for (int i = -nMax; i <= nMax; i++) {
         // todo students
+        ps.add(glm::vec3(i, 0, 0), glm::vec3(0, 0, 0));
     }
+
+    ps.particle(0).setStatic(true);
+    ps.particle(ps.size() - 1).setStatic(true);
 
     // Add neighbors
     for (int i = -nMax; i < nMax; i++) {
@@ -192,7 +196,8 @@ void TaskLect05_Springs::setForces() {
             auto spring_force =
                 kSpring * (distance_vector - distance_normed * n.distance);
             auto dampening_force =
-                glm::dot((vel[n.idx] - v0), distance_normed) * distance_normed * (bSpring);
+                glm::dot((vel[n.idx] - v0), distance_normed) * distance_normed *
+                (bSpring);
 
             force0 += spring_force + dampening_force;
             force1 -= spring_force + dampening_force;
