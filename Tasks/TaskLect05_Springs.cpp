@@ -84,6 +84,14 @@ void TaskLect05_Springs::generateScene1_rope() {
     // Add neighbors
     for (int i = -nMax; i < nMax; i++) {
         // todo students
+        int idx = i + nMax;
+
+        if (idx > 0) {
+            addNeighbor(idx - 1, idx);
+        }
+        if (idx < nMax * 2) {
+            addNeighbor(idx, idx + 1);
+        }
     }
 }
 
