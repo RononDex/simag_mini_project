@@ -6,61 +6,70 @@
 
 class ParticleSystem;
 
-class ICollision
-{
-public:
+class ICollision {
+  public:
+    virtual void handleCollisionByVelocity(ParticleSystem &ps,
+                                           float kn_normalFriction,
+                                           float kt_tangentialFriction) = 0;
+    virtual void handleCollisionByForce(ParticleSystem &ps, float forceStrength,
+                                        float kn_normalFriction,
+                                        float kt_tangentialFriction) = 0;
 
-	virtual void handleCollisionByVelocity(ParticleSystem& ps, float kn_normalFriction, float kt_tangentialFriction) = 0;
-	virtual void handleCollisionByForce(ParticleSystem& ps, float forceStrength, float kn_normalFriction, float kt_tangentialFriction) = 0;
+    virtual glm::vec3 position() = 0;
+    virtual void setPosition(glm::vec3 const &pos) = 0;
 
-	virtual glm::vec3 position() = 0;
-	virtual void setPosition(glm::vec3 const& pos) = 0;
+    virtual void draw() const = 0;
 
-	virtual void draw() const = 0;
+    virtual void imGui(std::string const &pre) = 0;
 
-	virtual void imGui(std::string const& pre) = 0;
+    virtual const char *toString() const = 0;
 
-	virtual const char* toString() const = 0;
-
-	// Needed for Mac
-	virtual ~ICollision() = default;
+    // Needed for Mac
+    virtual ~ICollision() = default;
 };
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-class CCollision : public ICollision
-{
+class CCollision : public ICollision {
 
-public:
+  public:
+    virtual void
+    handleCollisionByVelocity(ParticleSystem &ps,
+                              float kn_normalFriction = 0.0f,
+                              float kt_tangentialFriction = 0.0f) override{};
+    virtual void
+    handleCollisionByForce(ParticleSystem &ps, float forceStrength = 100.0f,
+                           float kn_normalFriction = 0.0f,
+                           float kt_tangentialFriction = 0.0f) override{};
 
-	virtual void handleCollisionByVelocity(ParticleSystem& ps, float kn_normalFriction = 0.0f, float kt_tangentialFriction = 0.0f) override {};
-	virtual void handleCollisionByForce(ParticleSystem& ps, float forceStrength=100.0f, float kn_normalFriction = 0.0f, float kt_tangentialFriction = 0.0f) override {};
+    virtual glm::vec3 position() override = 0;
+    virtual void setPosition(glm::vec3 const &pos) override = 0;
 
-	virtual glm::vec3 position() override = 0;
-	virtual void setPosition(glm::vec3 const& pos) override = 0;
+    virtual void draw() const override{};
 
-	virtual void draw() const override {};
+    virtual void imGui(std::string const &pre) override{};
 
-	virtual void imGui(std::string const& pre) override {};
+    virtual const char *toString() const override { return "UNDEFINED"; }
 
-	virtual const char* toString() const override { return "UNDEFINED"; }
+    // ------------------------------------------------------------------------
 
-	// ------------------------------------------------------------------------
+    CCollision() = default;
+    ~CCollision() override = default;
 
-	CCollision() = default;
-	~CCollision() override = default;
+  protected:
+    void handleFriction(glm::vec3 &particleVel, glm::vec3 &particleForce,
+                        glm::vec3 &collisionNormal, float kn_normalFriction,
+                        float kt_tangentialFriction) {
+        glm::vec3 &v = particleVel;
+        glm::vec3 &f = particleForce;
+        glm::vec3 &n = collisionNormal;
 
-protected:
-
-	void handleFriction(glm::vec3& particleVel, glm::vec3& particleForce, glm::vec3& collisionNormal, float kn_normalFriction, float kt_tangentialFriction)
-	{
-		glm::vec3& v = particleVel;
-		glm::vec3& f = particleForce;
-		glm::vec3& n = collisionNormal;
-
-		// todo students
-	}
-
+        // todo students
+        glm::vec3 v_n = glm::dot(v, n)*n;
+        glm::vec3 v_t = v - v_n;
+        v -= v_n * kn_normalFriction;
+        f += -v_t * kt_tangentialFriction;
+    }
 };

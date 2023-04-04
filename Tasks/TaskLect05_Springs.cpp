@@ -143,6 +143,43 @@ void TaskLect05_Springs::generateScene3_cloth() {
     //
 
     // todo students
+    for (int i = 0; i < nX; i++) {
+        for (int j = 0; j < nY; j++) {
+            float xPos = i;
+            float yPos = j;
+
+            ps.add(glm::vec3(xPos * scale, height, yPos*scale));
+
+            if (yPos == 0) {
+                ps.particle(i * nY + j).setStatic(true);
+            }
+        }
+    }
+    for (int i = 0; i < nX; i++) {
+        for (int j = 0; j < nY; j++) {
+            int idx = i * nY + j;
+            // Add left spring
+            if (j > 0) {
+                addNeighbor(idx, idx -1);
+            }
+
+            // Add right spring
+            if (j != nY - 1) {
+                addNeighbor(idx, idx + 1);
+            }
+
+            // Add up spring
+            if (i > 0) {
+                addNeighbor(idx, idx - nY);
+            }
+
+            // Add below spring
+            if (i != nX - 1) {
+                addNeighbor(idx, idx + nY);
+            }
+        }
+    }
+
 }
 
 void TaskLect05_Springs::generateScene4() {
