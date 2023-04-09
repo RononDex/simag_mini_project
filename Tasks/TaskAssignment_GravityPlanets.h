@@ -25,6 +25,7 @@ private:
 	int m_workOnPsIdx = 0;
 
 	float m_gravityIntensity = 0.1f;
+	float m_gravityConstant = 1.0f;
 
 	void generateScene0();
 	void generateScene1();

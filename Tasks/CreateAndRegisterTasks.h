@@ -101,9 +101,7 @@ void setDefaultTasks(App *app) {
     // app->pushDefaultTask<TaskAssignment_Fireworks>();
     // app->pushDefaultTask<TaskLect04_AddForce>();
     //
-    // Setup Morph
-    app->pushDefaultTask<TaskPickParticle>();
-    app->pushDefaultTask<TaskLect05_Springs>();
-    app->pushDefaultTask<TaskLect04_AddForce>();
+    app->pushDefaultTask<TaskAssignment_GravityPlanets>();
+    app->pushDefaultTask<TaskEnqueuePS>();
 }
 } // namespace

@@ -4,6 +4,7 @@
 
 #include "../Helper/HelperDraw.h"
 #include "ParticleSystem.h"
+#include "glm/geometric.hpp"
 
 CollisionPlane::CollisionPlane() : m_p(glm::vec3(0)), m_n(glm::vec3(0, 1, 0)) {}
 
@@ -44,6 +45,10 @@ void CollisionPlane::handleCollisionByVelocity(ParticleSystem &ps,
 
         // add tangential and normal friction
         handleFriction(v, f, planeN, kn_normalFriction, kt_tangentialFriction);
+        float length = glm::dot(planeN, f);
+        if (length < 0) {
+            f -= length * planeN;
+        }
     }
 }
 
