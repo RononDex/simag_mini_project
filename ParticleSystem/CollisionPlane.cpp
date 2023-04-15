@@ -4,6 +4,7 @@
 
 #include "../Helper/HelperDraw.h"
 #include "ParticleSystem.h"
+#include "glm/ext/vector_float3.hpp"
 #include "glm/geometric.hpp"
 
 CollisionPlane::CollisionPlane() : m_p(glm::vec3(0)), m_n(glm::vec3(0, 1, 0)) {}
@@ -28,27 +29,42 @@ void CollisionPlane::handleCollisionByVelocity(ParticleSystem &ps,
     const glm::vec3 eps = 0.0001f * planeN;
 
     for (int i = 0; i < s; i++) {
-        if (states[i].isStatic())
-            continue; // Do not collide static particles
+        handleCollisionByVelocity(ps, i, planeP, planeN, kn_normalFriction,
+                                  kt_tangentialFriction);
+    }
+}
 
-        glm::vec3 &p = pos[i];
-        glm::vec3 &v = vel[i];
-        glm::vec3 &f = forces[i];
+void CollisionPlane::handleCollisionByVelocity(ParticleSystem &ps, int idx,
+                                               glm::vec3 planeP,
+                                               glm::vec3 planeN,
+                                               float kn_normalFriction,
+                                               float kt_tangentialFriction) {
+    auto &pos = ps.positions();
+    auto &vel = ps.velocities();
+    auto &forces = ps.forces();
+    auto &states = ps.states();
 
-        // todo students
-        auto d = glm::dot((p - planeP), planeN);
-        if (d >= 0) {
-            continue;
-        }
-        p = (std::abs(d) * planeN) + p + eps * planeN;
-        v = glm::reflect(v, planeN);
+    if (states[idx].isStatic())
+        return;
 
-        // add tangential and normal friction
-        handleFriction(v, f, planeN, kn_normalFriction, kt_tangentialFriction);
-        float length = glm::dot(planeN, f);
-        if (length < 0) {
-            f -= length * planeN;
-        }
+    glm::vec3 &p = pos[idx];
+    glm::vec3 &v = vel[idx];
+    glm::vec3 &f = forces[idx];
+
+    // todo students
+    auto d = glm::dot((p - planeP), planeN);
+    if (d >= 0) {
+        return;
+    }
+    const glm::vec3 eps = 0.0001f * planeN;
+    p = (std::abs(d) * planeN) + p + eps * planeN;
+    v = glm::reflect(v, planeN);
+
+    // add tangential and normal friction
+    handleFriction(v, f, planeN, kn_normalFriction, kt_tangentialFriction);
+    float length = glm::dot(planeN, f);
+    if (length < 0) {
+        f -= length * planeN;
     }
 }
 

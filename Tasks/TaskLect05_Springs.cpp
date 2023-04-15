@@ -116,8 +116,8 @@ void TaskLect05_Springs::generateScene3_cloth() {
     // Cloth
     m_kSpring = 20.0f;
     m_dampingSpring = 5.0f;
-    gEnv->stateSim->dtFixed = 0.006f;
-    gEnv->stateSim->dtFixedNoOfStepsPerFrame = 30;
+    gEnv->stateSim->dtFixed = 0.004f;
+    gEnv->stateSim->dtFixedNoOfStepsPerFrame = 5;
 
     auto &ps = particleSystem(m_workOnPsIdx);
     ps.clear();
