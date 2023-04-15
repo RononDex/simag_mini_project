@@ -73,6 +73,46 @@ void CollisionPlane::handleCollisionByForce(ParticleSystem &ps,
                                             float kn_normalFriction,
                                             float kt_tangentialFriction) {
     // todo students
+    int s = (int)ps.size();
+    if (s < 1)
+        return;
+
+    auto &pos = ps.positions();
+    auto &vel = ps.velocities();
+    auto &forces = ps.forces();
+    auto &states = ps.states();
+
+    auto &planeP = m_p;
+    auto &planeN = m_n;
+
+    const glm::vec3 eps = 0.0001f * planeN;
+
+    for (int i = 0; i < s; i++) {
+        if (states[i].isStatic())
+            continue;
+
+        glm::vec3 &p = pos[i];
+        glm::vec3 &v = vel[i];
+        glm::vec3 &f = forces[i];
+
+        // todo students
+        auto d = glm::dot((p - planeP), planeN);
+
+        // If d is >= 0, we have no collision
+        if (d >= 0) {
+            continue;
+        }
+        const glm::vec3 eps = 0.0001f * planeN;
+
+        f -= forceStrength * d * planeN;
+
+        // add tangential and normal friction
+        handleFriction(v, f, planeN, kn_normalFriction, kt_tangentialFriction);
+        float length = glm::dot(planeN, f);
+        if (length < 0) {
+            f -= length * planeN;
+        }
+    }
 }
 
 void CollisionPlane::draw() const { Helper::drawPlane(m_p, m_n); }

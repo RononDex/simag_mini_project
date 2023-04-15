@@ -28,9 +28,39 @@ CollisionCube::CollisionCube()
 
 CollisionCube::~CollisionCube() {}
 
+void CollisionCube::updatePlanes() {
+    glm::vec3 center = (m_p0 + m_p1) * 0.5f;
+    float length = std::abs((m_p0 - m_p1).x);
+    float width = std::abs((m_p0 - m_p1).y);
+    float height = std::abs((m_p0 - m_p1).z);
+
+    m_plane_positions[0] =
+        glm::vec3(center.x, center.y, center.z + (height / 2.0f));
+    m_plane_positions[1] =
+        glm::vec3(center.x, center.y - (width / 2.0f), center.z);
+    m_plane_positions[2] =
+        glm::vec3(center.x + (length / 2.0f), center.y, center.z);
+    m_plane_positions[3] =
+        glm::vec3(center.x, center.y + (width / 2.0f), center.z);
+    m_plane_positions[4] =
+        glm::vec3(center.x - (length / 2.0f), center.y, center.z);
+    m_plane_positions[5] =
+        glm::vec3(center.x, center.y, center.z - (height / 2.0f));
+
+    m_plane_normals[0] = glm::vec3(0, 0, 1);
+    m_plane_normals[1] = glm::vec3(0, -1, 0);
+    m_plane_normals[2] = glm::vec3(1, 0, 0);
+    m_plane_normals[3] = glm::vec3(0, 1, 0);
+    m_plane_normals[4] = glm::vec3(-1, 0, 0);
+    m_plane_normals[5] = glm::vec3(0, 0, -1);
+}
+
 void CollisionCube::handleCollisionByVelocity(ParticleSystem &ps,
                                               float kn_normalFriction,
                                               float kt_tangentialFriction) {
+
+    this->updatePlanes();
+
     int s = (int)ps.size();
     if (s < 1)
         return;
@@ -53,19 +83,9 @@ void CollisionCube::handleCollisionByVelocity(ParticleSystem &ps,
         glm::vec3 &v = vel[i];
         glm::vec3 &f = forces[i];
 
-        float distance_to_planes[m_number_of_planes];
-
         // todo students
-        bool didCollide = true;
-        for (int j = 0; j < m_number_of_planes; j++) {
-            glm::vec3 d = pos[i] - m_plane_positions[j];
-            float distance = glm::dot(d, m_plane_normals[j]);
-            distance_to_planes[j] = distance;
-            if (distance >= 0) {
-                didCollide = false;
-                break;
-            }
-        }
+        float distance_to_planes[m_number_of_planes];
+        bool didCollide = isCollided(ps, i, distance_to_planes);
 
         if (didCollide) {
             // find smallest distance
@@ -91,6 +111,23 @@ void CollisionCube::handleCollisionByVelocity(ParticleSystem &ps,
     }
 }
 
+bool CollisionCube::isCollided(ParticleSystem &ps, int idx,
+                               float *distance_to_planes) {
+    bool didCollide = true;
+    glm::vec3 particle_position = ps.positions()[idx];
+    for (int j = 0; j < m_number_of_planes; j++) {
+        glm::vec3 d = particle_position - m_plane_positions[j];
+        float distance = glm::dot(d, m_plane_normals[j]);
+        distance_to_planes[j] = distance;
+        if (distance >= 0) {
+            didCollide = false;
+            break;
+        }
+    }
+
+    return didCollide;
+}
+
 void CollisionCube::handleCollisionByForce(ParticleSystem &ps,
                                            float forceStrength,
                                            float kn_normalFriction,
@@ -110,9 +147,6 @@ void CollisionCube::handleCollisionByForce(ParticleSystem &ps,
 
     const float eps = 0.0001f;
 
-    glm::vec3 cubeN(0);
-    float cubeDistToSurface;
-
     for (int i = 0; i < s; i++) {
         if (states[i].isStatic())
             continue; // Do not collide static particles
@@ -122,6 +156,28 @@ void CollisionCube::handleCollisionByForce(ParticleSystem &ps,
         glm::vec3 &f = forces[i];
 
         // todo students
+        float distance_to_planes[m_number_of_planes];
+        bool didCollide = isCollided(ps, i, distance_to_planes);
+
+        if (didCollide) {
+            // find smallest distance
+            float smallestDistance = std::numeric_limits<float>::max();
+            int closestPlaneIndex = 0;
+            for (int j = 0; j < m_number_of_planes; j++) {
+                if (std::abs(distance_to_planes[j]) < smallestDistance) {
+                    smallestDistance = std::abs(distance_to_planes[j]);
+                    closestPlaneIndex = j;
+                }
+            }
+
+            // Move particle to the surface of the closest plane
+            forces[i] += forceStrength * smallestDistance *
+                         m_plane_normals[closestPlaneIndex];
+
+            handleFriction(vel[i], forces[i],
+                           m_plane_normals[closestPlaneIndex],
+                           kn_normalFriction, kt_tangentialFriction);
+        }
     }
 }
 
@@ -139,30 +195,6 @@ void CollisionCube::imGui(std::string const &pre) {
     m_p1 = center + dx;
 
     ensureMinMax(m_p0, m_p1);
-
-    float length = std::abs((m_p0 - m_p1).x);
-    float width = std::abs((m_p0 - m_p1).y);
-    float height = std::abs((m_p0 - m_p1).z);
-
-    m_plane_positions[0] =
-        glm::vec3(center.x, center.y, center.z + (height / 2.0f));
-    m_plane_positions[1] =
-        glm::vec3(center.x, center.y - (width / 2.0f), center.z);
-    m_plane_positions[2] =
-        glm::vec3(center.x + (length / 2.0f), center.y, center.z);
-    m_plane_positions[3] =
-        glm::vec3(center.x, center.y + (width / 2.0f), center.z);
-    m_plane_positions[4] =
-        glm::vec3(center.x - (length / 2.0f), center.y, center.z);
-    m_plane_positions[5] =
-        glm::vec3(center.x, center.y, center.z - (height / 2.0f));
-
-    m_plane_normals[0] = glm::vec3(0, 0, 1);
-    m_plane_normals[1] = glm::vec3(0, -1, 0);
-    m_plane_normals[2] = glm::vec3(1, 0, 0);
-    m_plane_normals[3] = glm::vec3(0, 1, 0);
-    m_plane_normals[4] = glm::vec3(-1, 0, 0);
-    m_plane_normals[5] = glm::vec3(0, 0, -1);
 }
 
 const char *CollisionCube::toString() const { return "Collision with Cube"; }
