@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ICollision.h"
+#include "glm/ext/vector_float3.hpp"
+#include <limits>
 
 class CollisionCube : public CCollision
 {
@@ -27,7 +29,10 @@ public:
 
 private:
 
+    int m_number_of_planes = 6;
 	glm::vec3 m_p0; // posMin
 	glm::vec3 m_p1; // posMax
+    glm::vec3* m_plane_positions = new glm::vec3[m_number_of_planes];
+    glm::vec3* m_plane_normals = new glm::vec3[m_number_of_planes];
 
 };

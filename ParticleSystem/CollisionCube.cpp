@@ -1,11 +1,13 @@
 #include "CollisionCube.h"
 
+#include <cstdlib>
 #include <imgui/imgui.h>
 
 #include "../Helper/HelperDraw.h"
 #include "CollisionPlane.h"
 #include "ParticleSystem.h"
 #include "glm/ext/vector_float3.hpp"
+#include "glm/geometric.hpp"
 
 namespace {
 void ensureMinMax(glm::vec3 &p0, glm::vec3 &p1) {
@@ -41,15 +43,7 @@ void CollisionCube::handleCollisionByVelocity(ParticleSystem &ps,
     auto &cubeP0 = m_p0;
     auto &cubeP1 = m_p1;
 
-    glm::vec3 cube_center = ((cubeP0 - cubeP1) / 2.0f) + cubeP1;
-    float length = std::abs((cubeP0 - cubeP1).x);
-    float width = std::abs((cubeP0 - cubeP1).y);
-    float height = std::abs((cubeP0 - cubeP1).z);
-
     const float eps = 0.0001f;
-
-    glm::vec3 cubeN(0);
-    float cubeDistToSurface;
 
     for (int i = 0; i < s; i++) {
         if (states[i].isStatic())
@@ -59,25 +53,41 @@ void CollisionCube::handleCollisionByVelocity(ParticleSystem &ps,
         glm::vec3 &v = vel[i];
         glm::vec3 &f = forces[i];
 
+        float distance_to_planes[m_number_of_planes];
+
         // todo students
-        handleCollisionByVelocity(
-            ps, i, cube_center + (height * glm::vec3(0, 0, 0.5)),
-            glm::vec3(0, 0, 1), kn_normalFriction, kt_tangentialFriction);
-        handleCollisionByVelocity(
-            ps, i, cube_center - (width * glm::vec3(0, 0.5, 0)),
-            glm::vec3(0, -1, 0), kn_normalFriction, kt_tangentialFriction);
-        handleCollisionByVelocity(
-            ps, i, cube_center + (length * glm::vec3(0.5, 0, 0)),
-            glm::vec3(1, 0, 0), kn_normalFriction, kt_tangentialFriction);
-        handleCollisionByVelocity(
-            ps, i, cube_center + (width * glm::vec3(0, 0.5, 0)),
-            glm::vec3(0, 1, 0), kn_normalFriction, kt_tangentialFriction);
-        handleCollisionByVelocity(
-            ps, i, cube_center - (length * glm::vec3(0.5, 0, 0)),
-            glm::vec3(-1, 0, 0), kn_normalFriction, kt_tangentialFriction);
-        handleCollisionByVelocity(
-            ps, i, cube_center - (height * glm::vec3(0, 0, 0.5)),
-            glm::vec3(0, 0, -1), kn_normalFriction, kt_tangentialFriction);
+        bool didCollide = true;
+        for (int j = 0; j < m_number_of_planes; j++) {
+            glm::vec3 d = pos[i] - m_plane_positions[j];
+            float distance = glm::dot(d, m_plane_normals[j]);
+            distance_to_planes[j] = distance;
+            if (distance >= 0) {
+                didCollide = false;
+                break;
+            }
+        }
+
+        if (didCollide) {
+            // find smallest distance
+            float smallestDistance = std::numeric_limits<float>::max();
+            int closestPlaneIndex = 0;
+            for (int j = 0; j < m_number_of_planes; j++) {
+                if (std::abs(distance_to_planes[j]) < smallestDistance) {
+                    smallestDistance = std::abs(distance_to_planes[j]);
+                    closestPlaneIndex = j;
+                }
+            }
+
+            // Move particle to the surface of the closest plane
+            pos[i] = std::abs(smallestDistance) *
+                         m_plane_normals[closestPlaneIndex] +
+                     pos[i] + eps * m_plane_normals[closestPlaneIndex];
+            vel[i] = glm::reflect(vel[i], m_plane_normals[closestPlaneIndex]);
+
+            handleFriction(vel[i], forces[i],
+                           m_plane_normals[closestPlaneIndex],
+                           kn_normalFriction, kt_tangentialFriction);
+        }
     }
 }
 
@@ -129,6 +139,30 @@ void CollisionCube::imGui(std::string const &pre) {
     m_p1 = center + dx;
 
     ensureMinMax(m_p0, m_p1);
+
+    float length = std::abs((m_p0 - m_p1).x);
+    float width = std::abs((m_p0 - m_p1).y);
+    float height = std::abs((m_p0 - m_p1).z);
+
+    m_plane_positions[0] =
+        glm::vec3(center.x, center.y, center.z + (height / 2.0f));
+    m_plane_positions[1] =
+        glm::vec3(center.x, center.y - (width / 2.0f), center.z);
+    m_plane_positions[2] =
+        glm::vec3(center.x + (length / 2.0f), center.y, center.z);
+    m_plane_positions[3] =
+        glm::vec3(center.x, center.y + (width / 2.0f), center.z);
+    m_plane_positions[4] =
+        glm::vec3(center.x - (length / 2.0f), center.y, center.z);
+    m_plane_positions[5] =
+        glm::vec3(center.x, center.y, center.z - (height / 2.0f));
+
+    m_plane_normals[0] = glm::vec3(0, 0, 1);
+    m_plane_normals[1] = glm::vec3(0, -1, 0);
+    m_plane_normals[2] = glm::vec3(1, 0, 0);
+    m_plane_normals[3] = glm::vec3(0, 1, 0);
+    m_plane_normals[4] = glm::vec3(-1, 0, 0);
+    m_plane_normals[5] = glm::vec3(0, 0, -1);
 }
 
 const char *CollisionCube::toString() const { return "Collision with Cube"; }
