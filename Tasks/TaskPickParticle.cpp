@@ -49,6 +49,10 @@ void TaskPickParticle::rotateAllStaticParticlesAroundCenter() {
         for (int i = 0; i < ps.positions().size(); i++) {
             auto particle = ps.particle(i);
             if (particle.isStatic()) {
+                // To rotate around the center, we first subtract the centers
+                // position, placing the object at 0,0,0.
+                // Then we can rotate around (0,0,0) and move it back to its old
+                // position by adding the center position again
                 auto new_Pos = glm::vec3(particle.pos());
                 new_Pos -= center;
                 new_Pos = glm::rotate(new_Pos, dxRotation, glm::vec3(0, 1, 0));
