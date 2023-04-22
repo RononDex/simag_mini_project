@@ -22,6 +22,8 @@
 
 #include "TaskLect05_Springs.h"
 
+#include "TaskFlocking.h"
+
 // Assignment Tasks
 #include "TaskAssignment_Morph.h"
 #include "TaskAssignment_Fireworks.h"
@@ -63,6 +65,8 @@ namespace
         app->registerTask<TaskLect04_Pendula>();
 
         app->registerTask<TaskLect05_Springs>();
+
+        app->registerTask<TaskFlocking>();
 
         // Assignment Tasks
         app->registerTask<TaskAssignment_Morph>();
