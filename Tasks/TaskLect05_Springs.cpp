@@ -169,7 +169,7 @@ void TaskLect05_Springs::addBox(glm::vec3 const &p0, glm::vec3 const &p1) {
 
 void TaskLect05_Springs::generateScene2_ragdoll() {
 
-    m_kSpring = 2000.0f;
+    m_kSpring = 1500.0f;
     m_dampingSpring = 50.0f;
     gEnv->stateSim->dtFixed = 0.002f;
     gEnv->stateSim->dtFixedNoOfStepsPerFrame = 10;
@@ -209,7 +209,7 @@ void TaskLect05_Springs::generateScene2_ragdoll() {
                      centerPos.z + depth * 0.3f));
 
     // Body
-    addBox(glm::vec3(centerPos.x - width * 0.15f, centerPos.y - height * 0.1f,
+    addBox(glm::vec3(centerPos.x - width * 0.15f, centerPos.y - height * 0.08f,
                      centerPos.z - depth * 0.5f),
            glm::vec3(centerPos.x + width * 0.15f, centerPos.y + height * 0.28f,
                      centerPos.z + depth * 0.5f));
@@ -395,7 +395,7 @@ void TaskLect05_Springs::generateScene3_cloth() {
                 addNeighbor(idx, idx - nY - 1);
             }
 
-            // Add second neighbour top
+            // Add second neighbors 
             if (j > 1) {
                 addNeighbor(idx, idx - 2);
             }
@@ -405,7 +405,6 @@ void TaskLect05_Springs::generateScene3_cloth() {
             if (j < nY - 2) {
                 addNeighbor(idx, idx + 2);
             }
-
             if (i < nX - 2) {
                 addNeighbor(idx, idx + 2 * nY);
             }
