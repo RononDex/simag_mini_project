@@ -102,10 +102,10 @@ void setDefaultTasks(App *app) {
     // app->pushDefaultTask<TaskLect04_AddForce>();
     //
     // Assignment 2 Task 2 Cloth collisions
-    app->pushDefaultTask<TaskPickParticle>();
-    app->pushDefaultTask<TaskLect05_Springs>();
-    app->pushDefaultTask<TaskCollision>();
-    app->pushDefaultTask<TaskCollisionFloor>();
-    app->pushDefaultTask<TaskLect04_AddForce>();
+    /* app->pushDefaultTask<TaskPickParticle>(); */
+    /* app->pushDefaultTask<TaskLect05_Springs>(); */
+    /* app->pushDefaultTask<TaskCollision>(); */
+    /* app->pushDefaultTask<TaskCollisionFloor>(); */
+    /* app->pushDefaultTask<TaskLect04_AddForce>(); */
 }
 } // namespace
