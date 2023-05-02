@@ -11,7 +11,7 @@ struct GlobalEnvironment
 	StateSimulation* stateSim = nullptr;
 	StateGui* stateGui = nullptr;
 	Camera* camera = nullptr;
-    SolarSystemPS solarSystemPS = *new SolarSystemPS();
+    SolarSystemPS solarSystemPS;
 
 	bool logDebug = false;
 
