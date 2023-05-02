@@ -15,7 +15,7 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel,
                         glm::vec<3, long double> force, long double mass,
                         glm::vec4 color) {
-    auto particle = SolarSystemParticle();
+    SolarSystemParticle particle;
     particle.setForce(force);
     particle.setMass(mass);
     particle.setPosition(pos);
