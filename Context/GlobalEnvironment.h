@@ -4,12 +4,14 @@
 
 #include "States.h"
 #include "../Helper/Camera.h"
+#include "../ParticleSystem/SolarSystemPS.h"
 
 struct GlobalEnvironment
 {
 	StateSimulation* stateSim = nullptr;
 	StateGui* stateGui = nullptr;
 	Camera* camera = nullptr;
+    SolarSystemPS solarSystemPS = *new SolarSystemPS();
 
 	bool logDebug = false;
 
