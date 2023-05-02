@@ -18,6 +18,7 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
     particle->setMass(mass);
     particle->setPosition(pos);
     particle->setVelocity(vel);
+    this->m_particles.insert(m_particles.end(), *particle);
 }
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel, long double mass) {
