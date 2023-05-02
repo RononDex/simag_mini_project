@@ -24,6 +24,6 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
 }
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel, long double mass) {
-    this->add(pos, vel, *new glm::vec<3, long double>(0), mass,
+    this->add(pos, vel, glm::vec<3, long double>(0), mass,
               glm::vec4(255, 255, 255, 0));
 }
