@@ -6,6 +6,7 @@
 #include "TaskCreatePsFromImage.h"
 #include "TaskEmpty.h"
 #include "TaskEnqueuePS.h"
+#include "TaskMiniProject_CopySolarSystemPSToNativePS.h"
 #include "TaskMouseAddVelocity.h"
 #include "TaskPickParticle.h"
 #include "TaskTools.h"
@@ -107,5 +108,8 @@ void setDefaultTasks(App *app) {
     /* app->pushDefaultTask<TaskCollision>(); */
     /* app->pushDefaultTask<TaskCollisionFloor>(); */
     /* app->pushDefaultTask<TaskLect04_AddForce>(); */
+
+    // MiniProject SolarSystemSimulation
+    app->pushDefaultTask<TaskMiniProject_CopySolarSystemPSToNativePS>();
 }
 } // namespace

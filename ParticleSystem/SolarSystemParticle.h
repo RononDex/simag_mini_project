@@ -2,6 +2,7 @@
 
 #include "glm/detail/qualifier.hpp"
 #include "glm/ext/vector_float3.hpp"
+#include "glm/ext/vector_float4.hpp"
 #include <glm/vec3.hpp>
 
 class SolarSystemParticle {
@@ -21,9 +22,13 @@ class SolarSystemParticle {
     void setForce(glm::vec<3, long double> force) { this->m_force = force; }
     glm::vec<3, long double> getForce() { return this->m_force; }
 
+    void setColor(glm::vec4 color) { this->m_color = color; }
+    glm::vec4 getColor() { return this->m_color; }
+
   private:
     long double m_mass;
     glm::vec<3, long double> m_pos;
     glm::vec<3, long double> m_vel;
     glm::vec<3, long double> m_force;
+    glm::vec4 m_color;
 };
