@@ -7,17 +7,26 @@
 
 void TaskMiniProject_CopySolarSystemPSToNativePS::setForces() {}
 void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
-    particleSystem(1).clear();
+    gEnv->stateSim->isRunning = false;
 
     int count = gEnv->solarSystemPS.getParticleCount();
+    if (count != m_particleCount) {
+        particleSystem(m_psId).clear();
+        for (int i = 0; i < count; i++) {
+            particleSystem(m_psId).add(glm::vec3(0, 0, 0));
+            particleSystem(m_psId).particle(i).setStatic(true);
+        }
+
+        m_particleCount = count;
+    }
     for (int i = 0; i < count; i++) {
         auto solarSystemParticle = gEnv->solarSystemPS.get(i);
+        auto ps = particleSystem(m_psId);
 
-        particleSystem(1).add(glm::vec3(solarSystemParticle.getPosition().x,
-                                        solarSystemParticle.getPosition().y,
-                                        solarSystemParticle.getPosition().z));
-        auto particle = particleSystem(1).particle(i);
-        particle.color() = solarSystemParticle.getColor();
+        ps.positions()[i] = solarSystemParticle.getPosition();
+        ps.velocities()[i] = solarSystemParticle.getVelocity();
+        ps.colors()[i] = solarSystemParticle.getColor();
+        ps.forces()[i] = solarSystemParticle.getForce();
     }
 }
 
@@ -35,7 +44,8 @@ const char *TaskMiniProject_CopySolarSystemPSToNativePS::toString() const {
     std::stringstream ss;
     ss << "Description:"
        << "\n";
-    ss << "Adds whole ParticleSystem from SolarSystemPS into PS1."
+    ss << "Adds whole ParticleSystem from SolarSystemPS into PS0 and stops "
+          "simulation in PS0"
        << "\n";
 
     m_string = ss.str();

@@ -5,7 +5,7 @@
 
 SolarSystemPS::SolarSystemPS() {}
 
-SolarSystemParticle SolarSystemPS::get(int particleId) {
+SolarSystemParticle& SolarSystemPS::get(int particleId) {
     return this->m_particles[particleId];
 }
 

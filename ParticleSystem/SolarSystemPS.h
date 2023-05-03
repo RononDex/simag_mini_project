@@ -10,7 +10,7 @@ class SolarSystemPS {
 
   public:
     SolarSystemPS();
-    SolarSystemParticle get(int particleId);
+    SolarSystemParticle& get(int particleId);
     int getParticleCount();
     void add(glm::vec<3, long double> pos, glm::vec<3, long double> vel,
              glm::vec<3, long double> force, long double mass, glm::vec4 color);

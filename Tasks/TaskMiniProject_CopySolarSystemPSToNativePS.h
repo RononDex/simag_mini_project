@@ -20,4 +20,6 @@ class TaskMiniProject_CopySolarSystemPSToNativePS : public CTask {
 
   private:
     bool m_enable = true;
+    int m_particleCount;
+    int m_psId = 0;
 };
