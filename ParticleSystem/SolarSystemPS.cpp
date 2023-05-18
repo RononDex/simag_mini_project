@@ -20,10 +20,15 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
     particle.setMass(mass);
     particle.setPosition(pos);
     particle.setVelocity(vel);
+    particle.setColor(color);
     this->m_particles.insert(m_particles.end(), particle);
 }
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel, long double mass) {
     this->add(pos, vel, glm::vec<3, long double>(0), mass,
-              glm::vec4(255, 255, 255, 0));
+              glm::vec4(1, 1, 1, 0));
+}
+
+void SolarSystemPS::clear() {
+    this->m_particles.clear();
 }

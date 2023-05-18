@@ -28,5 +28,4 @@ public:
 
 	IntegratorLeapFrog() = default;
 	virtual ~IntegratorLeapFrog() = default;
-
 };
