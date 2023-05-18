@@ -16,6 +16,7 @@ class SolarSystemPS {
              glm::vec<3, long double> force, long double mass, glm::vec4 color);
     void add(glm::vec<3, long double> pos, glm::vec<3, long double> vel,
              long double mass);
+    void clear();
 
   private:
     std::vector<SolarSystemParticle> m_particles;

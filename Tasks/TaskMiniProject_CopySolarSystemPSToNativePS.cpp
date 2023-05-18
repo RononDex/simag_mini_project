@@ -19,14 +19,19 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
 
         m_particleCount = count;
     }
+    auto &ps = particleSystem(m_psId);
+    auto &colors = ps.colors();
+    auto &forces = ps.forces();
+    auto &positions = ps.positions();
+    auto &velocities = ps.velocities();
+
     for (int i = 0; i < count; i++) {
         auto solarSystemParticle = gEnv->solarSystemPS.get(i);
-        auto ps = particleSystem(m_psId);
 
-        ps.positions()[i] = solarSystemParticle.getPosition();
-        ps.velocities()[i] = solarSystemParticle.getVelocity();
-        ps.colors()[i] = solarSystemParticle.getColor();
-        ps.forces()[i] = solarSystemParticle.getForce();
+        positions[i] = solarSystemParticle.getPosition() * m_scalingFactor;
+        velocities[i] = solarSystemParticle.getVelocity() * m_scalingFactor;
+        colors[i] = solarSystemParticle.getColor();
+        forces[i] = solarSystemParticle.getForce() * m_scalingFactor;
     }
 }
 
