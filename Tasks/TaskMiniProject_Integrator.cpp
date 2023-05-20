@@ -4,7 +4,11 @@
 #include <sstream>
 
 void TaskMiniProject_Integrator::setForces() {}
-void TaskMiniProject_Integrator::doWork() {}
+void TaskMiniProject_Integrator::doWork() {
+    if (gEnv->stateSim->isRunning) {
+        this->RK2_Midpoint();
+    }
+}
 void TaskMiniProject_Integrator::imGui() {}
 const char *TaskMiniProject_Integrator::toString() const {
     std::stringstream ss;
@@ -34,6 +38,7 @@ void TaskMiniProject_Integrator::RK2_Midpoint() {
     gEnv->stateSim->dtFixedNoOfStepsPerFrame = 24;
 
     int nSize = gEnv->solarSystemPS.getParticleCount();
+    ensureSizeOfTemps();
 
     for (int i = 0; i < nSize; i++) {
 

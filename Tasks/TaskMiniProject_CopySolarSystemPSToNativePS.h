@@ -22,7 +22,7 @@ class TaskMiniProject_CopySolarSystemPSToNativePS : public CTask {
     bool m_enable = true;
     int m_particleCount;
     int m_psId = 0;
-    // Scale rendering so that, the distance to pluto would equal 8 units in the
+    // Scale rendering so that, 1 billion (10^9) km equals 1 unit
     // rendering
-    long double m_scalingFactor = (long double)8 / (long double)5906376272000;
+    long double m_scalingFactor = (long double)1 / (long double)1e9;
 };
