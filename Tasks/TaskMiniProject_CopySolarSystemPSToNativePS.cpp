@@ -7,7 +7,6 @@
 
 void TaskMiniProject_CopySolarSystemPSToNativePS::setForces() {}
 void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
-    gEnv->stateSim->isRunning = false;
 
     int count = gEnv->solarSystemPS.getParticleCount();
     if (count != m_particleCount) {
@@ -19,6 +18,7 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
 
         m_particleCount = count;
     }
+
     auto &ps = particleSystem(m_psId);
     auto &colors = ps.colors();
     auto &forces = ps.forces();

@@ -14,6 +14,7 @@ void TaskMiniProject_SetupSolarSystem::setupSolarSystem() {
 
     // Data source: https://ssd.jpl.nasa.gov/horizons/app.html
     // Start Time: 1990-01-01 00:00:00 UTC
+    // Units: Kilometers (km) and Seconds (s) and kilograms (kg)
     // Sun
     gEnv->solarSystemPS.add(
         glm::vec<3, long double>(0), glm::vec<3, long double>(1),
@@ -26,7 +27,11 @@ void TaskMiniProject_SetupSolarSystem::setupSolarSystem() {
         glm::vec<3, long double>(-5.109267189897491E+01L,
                                  2.765412990432811E+01L,
                                  6.949526145116829E+00L),
-        glm::vec<3, long double>(0), 0.33010E+24L, glm::vec4(1.0, 1.0, 0.3, 1.0));
+        glm::vec<3, long double>(0), 0.33010E+24L, glm::vec4(0.7, 0.7, 0.7, 1.0));
+
+
+    // Activate simulation
+    gEnv->stateSim->isRunning = true;
 }
 
 void TaskMiniProject_SetupSolarSystem::setForces() {}
