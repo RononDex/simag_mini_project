@@ -1,5 +1,6 @@
 #include "TaskMiniProject_Integrator.h"
 #include "../Context/GlobalEnvironment.h"
+#include "glm/detail/qualifier.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -7,6 +8,13 @@ void TaskMiniProject_Integrator::setForces() {}
 void TaskMiniProject_Integrator::doWork() {
     if (gEnv->stateSim->isRunning) {
         this->RK2_Midpoint();
+
+        for (int i = 0; i < gEnv->solarSystemPS.getParticleCount(); i++) {
+            auto &force = gEnv->solarSystemPS.get(i).getForce();
+            force = glm::vec<3, long double>();
+        }
+
+        gEnv->solarSystemPS.getSimulationDate() += gEnv->stateSim->dt;
     }
 }
 void TaskMiniProject_Integrator::imGui() {}
