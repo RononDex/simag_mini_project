@@ -25,7 +25,11 @@ class SolarSystemParticle {
     void setColor(glm::vec4 color) { this->m_color = color; }
     glm::vec4 &getColor() { return this->m_color; }
 
+    void setName(const char *name) { this->m_name = name; }
+    const char *getName() { return this->m_name; }
+
   private:
+    const char *m_name;
     long double m_mass;
     glm::vec<3, long double> m_pos;
     glm::vec<3, long double> m_vel;

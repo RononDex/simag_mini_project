@@ -14,19 +14,21 @@ int SolarSystemPS::getParticleCount() { return this->m_particles.size(); }
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel,
                         glm::vec<3, long double> force, long double mass,
-                        glm::vec4 color) {
+                        glm::vec4 color,
+                        const char *name) {
     SolarSystemParticle particle;
     particle.setForce(force);
     particle.setMass(mass);
     particle.setPosition(pos);
     particle.setVelocity(vel);
     particle.setColor(color);
+    particle.setName(name);
     this->m_particles.insert(m_particles.end(), particle);
 }
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel, long double mass) {
     this->add(pos, vel, glm::vec<3, long double>(0), mass,
-              glm::vec4(1, 1, 1, 0));
+              glm::vec4(1, 1, 1, 0), NULL);
 }
 
 void SolarSystemPS::clear() {

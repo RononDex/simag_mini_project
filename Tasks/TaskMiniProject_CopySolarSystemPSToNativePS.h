@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <map>
 
 #include "ITask.h"
 
@@ -13,16 +14,19 @@ class TaskMiniProject_CopySolarSystemPSToNativePS : public CTask {
         return "TaskMiniProject_CopySolarSystemPSToNativePS";
     }
     virtual void setForces() override;
+    void findNamedParticles(int &count);
     virtual void doWork() override;
     virtual void draw() const override;
     virtual void imGui() override;
     virtual const char *toString() const override;
 
   private:
-    bool m_enable = true;
     int m_particleCount;
     int m_psId = 0;
+    std::vector<int> m_particleNameIndices;
+    std::vector<std::string> m_particleNames;
     // Scale rendering so that, 1 billion (10^9) km equals 1 unit
     // rendering
     long double m_scalingFactor = (long double)1 / (long double)1e9;
+    int m_selectedCenterBody = -1;
 };
