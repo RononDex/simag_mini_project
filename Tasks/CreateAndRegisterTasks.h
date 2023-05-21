@@ -7,6 +7,7 @@
 #include "TaskEmpty.h"
 #include "TaskEnqueuePS.h"
 #include "TaskMiniProject_CopySolarSystemPSToNativePS.h"
+#include "TaskMiniProject_GravitationalForce.h"
 #include "TaskMiniProject_Integrator.h"
 #include "TaskMiniProject_SetupSolarSystem.h"
 #include "TaskMouseAddVelocity.h"
@@ -82,6 +83,7 @@ void createTasks(App *app) {
     app->registerTask<TaskMiniProject_Integrator>();
     app->registerTask<TaskMiniProject_CopySolarSystemPSToNativePS>();
     app->registerTask<TaskMiniProject_SetupSolarSystem>();
+    app->registerTask<TaskMiniProject_GravitationalForce>();
 }
 
 void setDefaultTasks(App *app) {
@@ -119,6 +121,7 @@ void setDefaultTasks(App *app) {
     app->pushDefaultTask<TaskMiniProject_SetupSolarSystem>();
     app->pushDefaultTask<TaskMiniProject_CopySolarSystemPSToNativePS>();
     app->pushDefaultTask<TaskMiniProject_Integrator>();
+    app->pushDefaultTask<TaskMiniProject_GravitationalForce>();
     app->pushDefaultTask<TaskPickParticle>();
 }
 } // namespace
