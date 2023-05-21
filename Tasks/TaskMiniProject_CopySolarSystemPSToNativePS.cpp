@@ -2,10 +2,22 @@
 #include "../Context/GlobalEnvironment.h"
 #include "glm/ext/vector_float3.hpp"
 #include "imgui/imgui.h"
+#include <cstring>
 #include <iostream>
 #include <sstream>
 
 void TaskMiniProject_CopySolarSystemPSToNativePS::setForces() {}
+void TaskMiniProject_CopySolarSystemPSToNativePS::findNamedParticles(
+    int &count) {
+    m_particleNames.clear();
+    m_particleNameIndices.clear();
+    for (int i = 0; i < count; i++) {
+        if (gEnv->solarSystemPS.get(i).getName() != NULL) {
+            m_particleNameIndices.push_back(i);
+            m_particleNames.push_back(gEnv->solarSystemPS.get(i).getName());
+        }
+    }
+}
 void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
 
     int count = gEnv->solarSystemPS.getParticleCount();
@@ -19,16 +31,30 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
         m_particleCount = count;
     }
 
+    findNamedParticles(count);
+
     auto &ps = particleSystem(m_psId);
     auto &colors = ps.colors();
     auto &forces = ps.forces();
     auto &positions = ps.positions();
     auto &velocities = ps.velocities();
+    auto centerPosition = glm::vec3(0);
+
+    if (m_selectedCenterBody >= 0 &&
+        m_selectedCenterBody < m_particleNameIndices.size()) {
+
+        centerPosition =
+            gEnv->solarSystemPS.get(m_particleNameIndices[m_selectedCenterBody])
+                .getPosition() *
+            m_scalingFactor;
+    }
 
     for (int i = 0; i < count; i++) {
         auto solarSystemParticle = gEnv->solarSystemPS.get(i);
 
         positions[i] = solarSystemParticle.getPosition() * m_scalingFactor;
+        positions[i] -= centerPosition;
+
         velocities[i] = solarSystemParticle.getVelocity() * m_scalingFactor;
         colors[i] = solarSystemParticle.getColor();
         forces[i] = solarSystemParticle.getForce() * m_scalingFactor;
@@ -36,13 +62,12 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
 }
 
 void TaskMiniProject_CopySolarSystemPSToNativePS::imGui() {
-    ImGui::Checkbox(paramName("Enable copying of SolarSystemPS to PS1"),
-                    &m_enable);
-
-    ImGui::Separator();
-    if (ImGui::Button("Clear PS1")) {
-        particleSystem(1).clear();
+    std::vector<const char *> names;
+    for (std::string const &str : m_particleNames) {
+        names.push_back(str.data());
     }
+    ImGui::Combo("ChooseCenteredObject", &m_selectedCenterBody, names.data(),
+                 m_particleNames.size());
 }
 
 const char *TaskMiniProject_CopySolarSystemPSToNativePS::toString() const {

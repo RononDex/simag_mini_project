@@ -41,10 +41,7 @@ void TaskMiniProject_Integrator::ensureSizeOfTemps() {
 
 void TaskMiniProject_Integrator::RK2_Midpoint() {
 
-    long double dt = 3600;
-    gEnv->stateSim->dtFixed = dt;
-    gEnv->stateSim->dtFixedNoOfStepsPerFrame = 24;
-
+    long double dt = gEnv->stateSim->dt;
     int nSize = gEnv->solarSystemPS.getParticleCount();
     ensureSizeOfTemps();
 
