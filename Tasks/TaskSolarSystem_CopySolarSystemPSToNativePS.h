@@ -5,13 +5,13 @@
 
 #include "ITask.h"
 
-class TaskMiniProject_CopySolarSystemPSToNativePS : public CTask {
+class TaskSolarSystem_CopySolarSystemPSToNativePS : public CTask {
   public:
-    TaskMiniProject_CopySolarSystemPSToNativePS() : CTask() {}
+    TaskSolarSystem_CopySolarSystemPSToNativePS() : CTask() {}
 
     // ITask
     virtual const char *name() const override {
-        return "TaskMiniProject_CopySolarSystemPSToNativePS";
+        return "TaskSolarSystem_CopySolarSystemPSToNativePS";
     }
     virtual void setForces() override;
     void findNamedParticles(int &count);

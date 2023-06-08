@@ -1,4 +1,4 @@
-#include "TaskMiniProject_CopySolarSystemPSToNativePS.h"
+#include "TaskSolarSystem_CopySolarSystemPSToNativePS.h"
 #include "../Context/GlobalEnvironment.h"
 #include "glm/ext/vector_float3.hpp"
 #include "imgui/imgui.h"
@@ -6,8 +6,8 @@
 #include <iostream>
 #include <sstream>
 
-void TaskMiniProject_CopySolarSystemPSToNativePS::setForces() {}
-void TaskMiniProject_CopySolarSystemPSToNativePS::findNamedParticles(
+void TaskSolarSystem_CopySolarSystemPSToNativePS::setForces() {}
+void TaskSolarSystem_CopySolarSystemPSToNativePS::findNamedParticles(
     int &count) {
     m_particleNames.clear();
     m_particleNameIndices.clear();
@@ -18,7 +18,7 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::findNamedParticles(
         }
     }
 }
-void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
+void TaskSolarSystem_CopySolarSystemPSToNativePS::doWork() {
 
     int count = gEnv->solarSystemPS.getParticleCount();
     if (count != m_particleCount) {
@@ -61,7 +61,7 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::doWork() {
     }
 }
 
-void TaskMiniProject_CopySolarSystemPSToNativePS::imGui() {
+void TaskSolarSystem_CopySolarSystemPSToNativePS::imGui() {
     std::vector<const char *> names;
     for (std::string const &str : m_particleNames) {
         names.push_back(str.data());
@@ -70,7 +70,7 @@ void TaskMiniProject_CopySolarSystemPSToNativePS::imGui() {
                  m_particleNames.size());
 }
 
-const char *TaskMiniProject_CopySolarSystemPSToNativePS::toString() const {
+const char *TaskSolarSystem_CopySolarSystemPSToNativePS::toString() const {
     std::stringstream ss;
     ss << "Description:"
        << "\n";
@@ -82,4 +82,4 @@ const char *TaskMiniProject_CopySolarSystemPSToNativePS::toString() const {
     return m_string.c_str();
 }
 
-void TaskMiniProject_CopySolarSystemPSToNativePS::draw() const {}
+void TaskSolarSystem_CopySolarSystemPSToNativePS::draw() const {}

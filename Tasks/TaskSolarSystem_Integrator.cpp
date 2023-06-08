@@ -1,11 +1,10 @@
-#include "TaskMiniProject_Integrator.h"
+#include "TaskSolarSystem_Integrator.h"
 #include "../Context/GlobalEnvironment.h"
 #include "glm/detail/qualifier.hpp"
 #include <iostream>
 #include <sstream>
 
-void TaskMiniProject_Integrator::setForces() {}
-void TaskMiniProject_Integrator::doWork() {
+void TaskSolarSystem_Integrator::setForces() {
     if (gEnv->stateSim->isRunning) {
         this->RK2_Midpoint();
 
@@ -16,9 +15,13 @@ void TaskMiniProject_Integrator::doWork() {
 
         gEnv->solarSystemPS.getSimulationDate() += gEnv->stateSim->dt;
     }
+
+    this->m_passNumber++;
+    this->m_passNumber = this->m_passNumber % 2;
 }
-void TaskMiniProject_Integrator::imGui() {}
-const char *TaskMiniProject_Integrator::toString() const {
+void TaskSolarSystem_Integrator::doWork() {}
+void TaskSolarSystem_Integrator::imGui() {}
+const char *TaskSolarSystem_Integrator::toString() const {
     std::stringstream ss;
     ss << "Description:"
        << "\n";
@@ -28,9 +31,9 @@ const char *TaskMiniProject_Integrator::toString() const {
     m_string = ss.str();
     return m_string.c_str();
 }
-void TaskMiniProject_Integrator::draw() const {}
+void TaskSolarSystem_Integrator::draw() const {}
 
-void TaskMiniProject_Integrator::ensureSizeOfTemps() {
+void TaskSolarSystem_Integrator::ensureSizeOfTemps() {
     if (m_tempPos.size() != (size_t)size()) {
         m_tempPos.resize(size());
     }
@@ -39,7 +42,7 @@ void TaskMiniProject_Integrator::ensureSizeOfTemps() {
     }
 }
 
-void TaskMiniProject_Integrator::RK2_Midpoint() {
+void TaskSolarSystem_Integrator::RK2_Midpoint() {
 
     long double dt = gEnv->stateSim->dt;
     int nSize = gEnv->solarSystemPS.getParticleCount();
@@ -64,17 +67,13 @@ void TaskMiniProject_Integrator::RK2_Midpoint() {
             v = v + (f / m) * (dt / 2);
             // position-update
             p = p + v * (dt / 2);
-
-            m_passNumber++;
-        }
-        if (m_passNumber == 1) {
+        /* } */
+        /* if (m_passNumber == 1) { */
             // Pass 2
             // velocity-update
             v = m_tempVel[i] + (f / m) * (dt);
             // position-update
             p = m_tempPos[i] + v * (dt);
-
-            m_passNumber = 0;
         }
     }
 }
