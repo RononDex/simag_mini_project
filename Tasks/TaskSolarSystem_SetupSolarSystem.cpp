@@ -1,4 +1,4 @@
-#include "TaskMiniProject_SetupSolarSystem.h"
+#include "TaskSolarSystem_SetupSolarSystem.h"
 #include "../Context/GlobalEnvironment.h"
 #include "glm/detail/qualifier.hpp"
 #include "imgui/imgui.h"
@@ -6,7 +6,7 @@
 #include <iostream>
 #include <sstream>
 
-void TaskMiniProject_SetupSolarSystem::setupSolarSystem() {
+void TaskSolarSystem_SetupSolarSystem::setupSolarSystem() {
     gEnv->stateGui->bDrawFloor = false;
     gEnv->stateGui->bDrawAxis = false;
     gEnv->solarSystemPS.clear();
@@ -113,9 +113,9 @@ void TaskMiniProject_SetupSolarSystem::setupSolarSystem() {
     gEnv->stateSim->isRunning = true;
 }
 
-void TaskMiniProject_SetupSolarSystem::setForces() {}
-void TaskMiniProject_SetupSolarSystem::doWork() {}
-void TaskMiniProject_SetupSolarSystem::imGui() {
+void TaskSolarSystem_SetupSolarSystem::setForces() {}
+void TaskSolarSystem_SetupSolarSystem::doWork() {}
+void TaskSolarSystem_SetupSolarSystem::imGui() {
     if (ImGui::Button("Clear PS")) {
         gEnv->solarSystemPS.clear();
     }
@@ -128,7 +128,7 @@ void TaskMiniProject_SetupSolarSystem::imGui() {
                 ctime(&gEnv->solarSystemPS.getSimulationDate()));
 }
 
-const char *TaskMiniProject_SetupSolarSystem::toString() const {
+const char *TaskSolarSystem_SetupSolarSystem::toString() const {
     std::stringstream ss;
     ss << "Description:"
        << "\n";
@@ -138,4 +138,4 @@ const char *TaskMiniProject_SetupSolarSystem::toString() const {
     m_string = ss.str();
     return m_string.c_str();
 }
-void TaskMiniProject_SetupSolarSystem::draw() const {}
+void TaskSolarSystem_SetupSolarSystem::draw() const {}

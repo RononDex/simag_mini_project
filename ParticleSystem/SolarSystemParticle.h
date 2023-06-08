@@ -4,6 +4,7 @@
 #include "glm/ext/vector_float3.hpp"
 #include "glm/ext/vector_float4.hpp"
 #include <glm/vec3.hpp>
+#include <string>
 
 class SolarSystemParticle {
   public:
@@ -27,6 +28,8 @@ class SolarSystemParticle {
 
     void setName(const char *name) { this->m_name = name; }
     const char *getName() { return this->m_name; }
+
+    std::string toString() const;
 
   private:
     const char *m_name;

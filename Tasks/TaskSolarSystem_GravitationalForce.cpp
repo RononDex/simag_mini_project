@@ -1,10 +1,9 @@
-#include "TaskMiniProject_GravitationalForce.h"
+#include "TaskSolarSystem_GravitationalForce.h"
 #include "../Context/GlobalEnvironment.h"
 #include <iostream>
 #include <sstream>
 
-void TaskMiniProject_GravitationalForce::setForces() {}
-void TaskMiniProject_GravitationalForce::doWork() {
+void TaskSolarSystem_GravitationalForce::setForces() {
     for (int i = 0; i < gEnv->solarSystemPS.getParticleCount(); i++) {
         auto &particle = gEnv->solarSystemPS.get(i);
 
@@ -13,7 +12,8 @@ void TaskMiniProject_GravitationalForce::doWork() {
             if (j == i)
                 continue;
 
-            // Calculate and add the gravitional force for this particle to all other particles
+            // Calculate and add the gravitional force for this particle to all
+            // other particles
             auto &otherParticle = gEnv->solarSystemPS.get(j);
             auto delta_Vector =
                 otherParticle.getPosition() - particle.getPosition();
@@ -35,8 +35,9 @@ void TaskMiniProject_GravitationalForce::doWork() {
         }
     }
 }
-void TaskMiniProject_GravitationalForce::imGui() {}
-const char *TaskMiniProject_GravitationalForce::toString() const {
+void TaskSolarSystem_GravitationalForce::doWork() {}
+void TaskSolarSystem_GravitationalForce::imGui() {}
+const char *TaskSolarSystem_GravitationalForce::toString() const {
     std::stringstream ss;
     ss << "Description:"
        << "\n";
@@ -46,4 +47,4 @@ const char *TaskMiniProject_GravitationalForce::toString() const {
     m_string = ss.str();
     return m_string.c_str();
 }
-void TaskMiniProject_GravitationalForce::draw() const {}
+void TaskSolarSystem_GravitationalForce::draw() const {}

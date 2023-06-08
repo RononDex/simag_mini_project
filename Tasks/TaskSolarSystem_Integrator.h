@@ -5,13 +5,13 @@
 #include "../Context/GlobalEnvironment.h"
 #include "ITask.h"
 
-class TaskMiniProject_Integrator : public CTask {
+class TaskSolarSystem_Integrator : public CTask {
   public:
-    TaskMiniProject_Integrator() : CTask() {}
+    TaskSolarSystem_Integrator() : CTask() {}
 
     // ITask
     virtual const char *name() const override {
-        return "TaskMiniProject_Integrator";
+        return "TaskSolarSystem_Integrator";
     }
     virtual void setForces() override;
     virtual void doWork() override;

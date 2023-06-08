@@ -4,14 +4,12 @@
 
 #include "ITask.h"
 
-class TaskMiniProject_GravitationalForce : public CTask {
+class TaskSolarSystem_SetupSolarSystem : public CTask {
   public:
-    TaskMiniProject_GravitationalForce() : CTask() {}
+    TaskSolarSystem_SetupSolarSystem() : CTask() {}
 
     // ITask
-    virtual const char *name() const override {
-        return "TaskMiniProject_GravitationalForce";
-    }
+    virtual const char *name() const override { return "TaskSolarSystem_SetupSolarSystem"; }
     virtual void setForces() override;
     virtual void doWork() override;
     virtual void draw() const override;
@@ -19,5 +17,5 @@ class TaskMiniProject_GravitationalForce : public CTask {
     virtual const char *toString() const override;
 
   private:
-    long double m_gravityConstant = 6.6743015E-20L;
+    void setupSolarSystem();
 };
