@@ -82,12 +82,12 @@ void TaskSolarSystem_PickParticle::explodeSelectedObject() {
     m_selectedParticleIdx = -1;
 
     int number_of_new_particles = 100;
-    long double max_explosion_velocity = 0.01; // km / s
     long double mass_per_particle =
         particle.getMass() / number_of_new_particles;
-    long double move_by_dist_fact = 10000;
-
-    int number_of_particles_per_plane = std::sqrt(number_of_new_particles);
+    long double move_by_dist_fact = 100000;
+    long double escapeVelocity =
+        calcEscapeVelocity(&particle, move_by_dist_fact);
+    long double max_explosion_velocity = 2 * escapeVelocity;
 
     auto &pos = particle.getPosition();
     auto &vel = particle.getVelocity();
@@ -95,9 +95,12 @@ void TaskSolarSystem_PickParticle::explodeSelectedObject() {
 
     for (int i = 0; i < number_of_new_particles / 2; i += 2) {
 
-        float x_vel = randomNumberInRange(max_explosion_velocity);
-        float y_vel = randomNumberInRange(max_explosion_velocity);
-        float z_vel = randomNumberInRange(max_explosion_velocity);
+        float x_vel =
+            randomNumberInRange(max_explosion_velocity) + escapeVelocity;
+        float y_vel =
+            randomNumberInRange(max_explosion_velocity) + escapeVelocity;
+        float z_vel =
+            randomNumberInRange(max_explosion_velocity) + escapeVelocity;
 
         char new_name[100];
         std::snprintf(new_name, 100, "%s fragment %d", particle.getName(), i);
@@ -131,6 +134,12 @@ void TaskSolarSystem_PickParticle::deleteParticle(int idx) {
 
 float TaskSolarSystem_PickParticle::randomNumberInRange(float max) {
     return 2 * ((float)(rand()) / (float)(RAND_MAX)*max) - max;
+}
+
+long double
+TaskSolarSystem_PickParticle::calcEscapeVelocity(SolarSystemParticle *particle,
+                                                 long double distance) {
+    return std::sqrt(particle->getMass() * (long double)6.6743e-20 / distance);
 }
 
 void TaskSolarSystem_PickParticle::imGui() {

@@ -16,7 +16,7 @@ void TaskSolarSystem_SetupSolarSystem::setupSolarSystem() {
     gEnv->solarSystemPS.setSimulationDate(mktime(&date));
 
     // Setup simulation parameters
-    gEnv->stateSim->dtFixed = 1800;
+    gEnv->stateSim->dtFixed = 3600;
     gEnv->stateSim->dtFixedNoOfStepsPerFrame = 24;
 
     // Data source: https://ssd.jpl.nasa.gov/horizons/app.html
