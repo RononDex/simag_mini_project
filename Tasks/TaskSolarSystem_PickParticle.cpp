@@ -171,7 +171,7 @@ void TaskSolarSystem_PickParticle::imGui() {
             return;
         }
 
-        ImGui::InputScalarN(paramName("Mass"), ImGuiDataType_Float, &m_Mass, 1);
+        ImGui::InputScalarN(paramName("Mass in 10^24 kg"), ImGuiDataType_Float, &m_Mass, 1);
 
         ImGui::Separator();
         ImGui::Text("Selected Particle");
