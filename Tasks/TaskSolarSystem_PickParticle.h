@@ -24,6 +24,7 @@ class TaskSolarSystem_PickParticle : public CTask {
     int m_workOnPsIdx = 0;
     int m_closestParticleIdx = -1;
     int m_selectedParticleIdx = -1;
+    float m_Mass = -1;
 
     bool m_selectedParticleStateOld = false;
 
