@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ITask.h"
+#include "../ParticleSystem/SolarSystemParticle.h"
 
 class TaskSolarSystem_PickParticle : public CTask {
   public:
@@ -32,4 +33,5 @@ class TaskSolarSystem_PickParticle : public CTask {
     float randomNumberInRange(float max);
 
     void deleteParticle(int idx);
+    long double calcEscapeVelocity(SolarSystemParticle *particle, long double distance);
 };
