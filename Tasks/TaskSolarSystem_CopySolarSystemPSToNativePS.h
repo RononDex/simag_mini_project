@@ -28,5 +28,5 @@ class TaskSolarSystem_CopySolarSystemPSToNativePS : public CTask {
     // Scale rendering so that, 1 billion (10^9) km equals 1 unit
     // rendering
     long double m_scalingFactor = (long double)1 / (long double)1e9;
-    int m_selectedCenterBody = -1;
+    int m_selectedCenterBody = 0;
 };

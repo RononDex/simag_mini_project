@@ -1,5 +1,6 @@
 #include "TaskSolarSystem_GravitationalForce.h"
 #include "../Context/GlobalEnvironment.h"
+#include "glm/gtx/quaternion.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -17,15 +18,7 @@ void TaskSolarSystem_GravitationalForce::setForces() {
             auto &otherParticle = gEnv->solarSystemPS.get(j);
             auto delta_Vector =
                 otherParticle.getPosition() - particle.getPosition();
-            auto distance_squared = std::pow(particle.getPosition().x -
-                                                 otherParticle.getPosition().x,
-                                             2) +
-                                    std::pow(particle.getPosition().y -
-                                                 otherParticle.getPosition().y,
-                                             2) +
-                                    std::pow(particle.getPosition().z -
-                                                 otherParticle.getPosition().z,
-                                             2);
+            auto distance_squared = glm::length2(delta_Vector);
 
             auto F_G = delta_Vector / std::sqrt(distance_squared) *
                        particle.getMass() * otherParticle.getMass() *

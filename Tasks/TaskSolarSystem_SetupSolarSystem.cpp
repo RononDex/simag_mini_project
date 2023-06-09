@@ -10,6 +10,7 @@ void TaskSolarSystem_SetupSolarSystem::setupSolarSystem() {
     gEnv->stateGui->bDrawFloor = false;
     gEnv->stateGui->bDrawAxis = false;
     gEnv->solarSystemPS.clear();
+    gEnv->camera->setNear(0.01f);
 
     // 1990-01-01
     struct tm date = {.tm_mday = 1, .tm_mon = 0, .tm_year = 90};

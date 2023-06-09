@@ -11,6 +11,8 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::findNamedParticles(
     int &count) {
     m_particleNames.clear();
     m_particleNameIndices.clear();
+    m_particleNames.push_back("None");
+    m_particleNameIndices.push_back(-1);
     for (int i = 0; i < count; i++) {
         if (gEnv->solarSystemPS.get(i).getName() != NULL) {
             m_particleNameIndices.push_back(i);
@@ -31,7 +33,7 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::doWork() {
         m_particleCount = count;
     }
 
-    findNamedParticles(count);
+    this->findNamedParticles(count);
 
     auto &ps = particleSystem(m_psId);
     auto &colors = ps.colors();
@@ -40,9 +42,8 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::doWork() {
     auto &velocities = ps.velocities();
     auto centerPosition = glm::vec3(0);
 
-    if (m_selectedCenterBody >= 0 &&
+    if (m_selectedCenterBody > 0 &&
         m_selectedCenterBody < m_particleNameIndices.size()) {
-
         centerPosition =
             gEnv->solarSystemPS.get(m_particleNameIndices[m_selectedCenterBody])
                 .getPosition() *
