@@ -20,7 +20,7 @@ class TaskSolarSystem_Integrator : public CTask {
     virtual const char *toString() const override;
 
   private:
-    void RK2_Midpoint();
+    void Euler_Cromer();
     int m_passNumber = 0;
     void ensureSizeOfTemps();
     size_t size() const { return (int)gEnv->solarSystemPS.getParticleCount(); }

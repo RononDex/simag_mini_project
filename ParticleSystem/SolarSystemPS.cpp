@@ -5,8 +5,8 @@
 
 SolarSystemPS::SolarSystemPS() {}
 
-SolarSystemParticle& SolarSystemPS::get(int particleId) {
-    return this->m_particles[particleId];
+SolarSystemParticle& SolarSystemPS::get(int particleIdx) {
+    return this->m_particles[particleIdx];
 }
 
 int SolarSystemPS::getParticleCount() { return this->m_particles.size(); }
@@ -25,6 +25,11 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
     particle.setName(name);
     this->m_particles.insert(m_particles.end(), particle);
 }
+
+void SolarSystemPS::remove(int particleIdx) {
+    this->m_particles.erase(this->m_particles.begin() + particleIdx);
+}
+
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel, long double mass) {
     this->add(pos, vel, glm::vec<3, long double>(0), mass,

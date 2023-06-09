@@ -6,7 +6,7 @@
 
 void TaskSolarSystem_Integrator::setForces() {
     if (gEnv->stateSim->isRunning) {
-        this->RK2_Midpoint();
+        this->Euler_Cromer();
 
         for (int i = 0; i < gEnv->solarSystemPS.getParticleCount(); i++) {
             auto &force = gEnv->solarSystemPS.get(i).getForce();
@@ -42,11 +42,10 @@ void TaskSolarSystem_Integrator::ensureSizeOfTemps() {
     }
 }
 
-void TaskSolarSystem_Integrator::RK2_Midpoint() {
+void TaskSolarSystem_Integrator::Euler_Cromer() {
 
     long double dt = gEnv->stateSim->dt;
     int nSize = gEnv->solarSystemPS.getParticleCount();
-    ensureSizeOfTemps();
 
     for (int i = 0; i < nSize; i++) {
 
@@ -58,22 +57,10 @@ void TaskSolarSystem_Integrator::RK2_Midpoint() {
         auto &f = particle.getForce();
 
         if (m_passNumber == 0) {
-            // Pass 1
-            // Use t0 and t1 as temporary values, which can be used in pass 2
-            m_tempPos[i] = p;
-            m_tempVel[i] = v;
-
             // velocity-update
-            v = v + (f / m) * (dt / 2);
+            v = v + (f / m) * (dt);
             // position-update
-            p = p + v * (dt / 2);
-        /* } */
-        /* if (m_passNumber == 1) { */
-            // Pass 2
-            // velocity-update
-            v = m_tempVel[i] + (f / m) * (dt);
-            // position-update
-            p = m_tempPos[i] + v * (dt);
+            p = p + v * (dt);
         }
     }
 }
