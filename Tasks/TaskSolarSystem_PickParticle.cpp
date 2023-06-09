@@ -14,6 +14,8 @@
 #include "../ParticleSystem/ParticleSystemContainer.h"
 #include "glm/detail/qualifier.hpp"
 #include "glm/ext/vector_float3.hpp"
+#include <math.h>
+#include <string>
 
 bool TaskSolarSystem_PickParticle::isValidParticleIdx(int idx) const {
     if (idx >= 0 && idx < (int)particleSystem(m_workOnPsIdx).size()) {
@@ -70,30 +72,79 @@ void TaskSolarSystem_PickParticle::doWork() {
     if (gEnv->stateGui->mouseButtonLeftClick) {
         m_clickPos = gEnv->stateGui->mousePos;
 
-        switch (m_onClickWhatToDo) {
-        case 0: // select
-            m_selectedParticleIdx = m_closestParticleIdx;
-            break;
-        default:
-            break;
-        }
+        m_selectedParticleIdx = m_closestParticleIdx;
     }
+}
+
+void TaskSolarSystem_PickParticle::explodeSelectedObject() {
+    auto particle = gEnv->solarSystemPS.get(m_selectedParticleIdx);
+    this->deleteParticle(m_selectedParticleIdx);
+    m_selectedParticleIdx = -1;
+
+    int number_of_new_particles = 100;
+    long double max_explosion_velocity = 0.01; // km / s
+    long double mass_per_particle =
+        particle.getMass() / number_of_new_particles;
+    long double move_by_dist_fact = 10000;
+
+    int number_of_particles_per_plane = std::sqrt(number_of_new_particles);
+
+    auto &pos = particle.getPosition();
+    auto &vel = particle.getVelocity();
+    auto &color = particle.getColor();
+
+    for (int i = 0; i < number_of_new_particles / 2; i += 2) {
+
+        float x_vel = randomNumberInRange(max_explosion_velocity);
+        float y_vel = randomNumberInRange(max_explosion_velocity);
+        float z_vel = randomNumberInRange(max_explosion_velocity);
+
+        char new_name[100];
+        std::snprintf(new_name, 100, "%s fragment %d", particle.getName(), i);
+
+        char new_name2[100];
+        std::snprintf(new_name2, 100, "%s fragment %d", particle.getName(),
+                      i + 1);
+
+        // Create a pair of particles in opposite directions
+        gEnv->solarSystemPS.add(
+            glm::vec<3, long double>(pos.x + (x_vel * move_by_dist_fact),
+                                     pos.y + (y_vel * move_by_dist_fact),
+                                     pos.z + (z_vel * move_by_dist_fact)),
+            glm::vec<3, long double>(x_vel + vel.x, y_vel + vel.y,
+                                     z_vel + vel.z),
+            glm::vec<3, long double>(), mass_per_particle, color, "");
+
+        gEnv->solarSystemPS.add(
+            glm::vec<3, long double>(pos.x - (x_vel * move_by_dist_fact),
+                                     pos.y - (y_vel * move_by_dist_fact),
+                                     pos.z - (z_vel * move_by_dist_fact)),
+            glm::vec<3, long double>(-x_vel + vel.x, -y_vel + vel.y,
+                                     -z_vel + vel.z),
+            glm::vec<3, long double>(), mass_per_particle, color, "");
+    }
+}
+
+void TaskSolarSystem_PickParticle::deleteParticle(int idx) {
+    gEnv->solarSystemPS.remove(m_selectedParticleIdx);
+}
+
+float TaskSolarSystem_PickParticle::randomNumberInRange(float max) {
+    return 2 * ((float)(rand()) / (float)(RAND_MAX)*max) - max;
 }
 
 void TaskSolarSystem_PickParticle::imGui() {
 
     // Show changeble states of selected particle
     if (isValidParticleIdx(m_selectedParticleIdx)) {
-        auto &ps = particleSystem(m_workOnPsIdx);
-        const int idx = m_selectedParticleIdx;
-        ImGui::SliderFloat3(paramName("Pos"), &ps.positions()[idx][0], -10.0f,
-                            10.0f);
-        ImGui::SliderFloat3(paramName("Vel"), &ps.velocities()[idx][0], -10.0f,
-                            10.0f);
-        ImGui::Text("%s %s", "Force", glm::to_string(ps.forces()[idx]).c_str());
-        ImGui::ColorEdit4(paramName("Color"), &ps.colors()[idx][0]);
 
-        ImGui::SliderFloat(paramName("Mass"), &ps.mass()[idx], -10.0f, 10.0f);
+        if (ImGui::Button(paramName("Explode object"))) {
+            explodeSelectedObject();
+            return;
+        }
+
+        const int idx = m_selectedParticleIdx;
+        auto &solarParticle = gEnv->solarSystemPS.get(idx);
 
         ImGui::Separator();
         ImGui::Text("Selected Particle");
