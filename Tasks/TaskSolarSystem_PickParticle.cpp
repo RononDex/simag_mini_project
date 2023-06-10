@@ -12,6 +12,7 @@
 
 #include "../Context/GlobalEnvironment.h"
 #include "../ParticleSystem/ParticleSystemContainer.h"
+#include "TaskSolarSystem_CopySolarSystemPSToNativePS.h"
 #include "glm/detail/qualifier.hpp"
 #include "glm/ext/vector_float3.hpp"
 #include <math.h>
@@ -24,7 +25,27 @@ bool TaskSolarSystem_PickParticle::isValidParticleIdx(int idx) const {
     return false;
 }
 
-void TaskSolarSystem_PickParticle::setForces() {}
+void TaskSolarSystem_PickParticle::setForces() {
+    if (isValidParticleIdx(m_selectedParticleIdx)) {
+        if (m_accelerationX > 0) {
+            gEnv->solarSystemPS.get(m_selectedParticleIdx).getForce() +=
+                m_accelerationX / 1000000 *
+                gEnv->solarSystemPS.get(m_selectedParticleIdx).getMass();
+        }
+
+        if (m_accelerationY > 0) {
+            gEnv->solarSystemPS.get(m_selectedParticleIdx).getForce() +=
+                m_accelerationY / 1000000 *
+                gEnv->solarSystemPS.get(m_selectedParticleIdx).getMass();
+        }
+
+        if (m_accelerationZ > 0) {
+            gEnv->solarSystemPS.get(m_selectedParticleIdx).getForce() +=
+                m_accelerationZ / 1000000 *
+                gEnv->solarSystemPS.get(m_selectedParticleIdx).getMass();
+        }
+    }
+}
 
 void TaskSolarSystem_PickParticle::findClosestParticle() {
     // Search for closest particle according to mouse position, returns idx
@@ -70,11 +91,57 @@ void TaskSolarSystem_PickParticle::doWork() {
     const bool is3d = gEnv->camera->is3d();
 
     if (gEnv->stateGui->mouseButtonLeftClick) {
-        m_clickPos = gEnv->stateGui->mousePos;
+        // Select clostest object
+        if (m_onClickWhatToDo == 0) {
+            m_clickPos = gEnv->stateGui->mousePos;
 
-        m_selectedParticleIdx = m_closestParticleIdx;
-        auto &particle = gEnv->solarSystemPS.get(m_selectedParticleIdx);
-        m_Mass = particle.getMass() / 1e24L;
+            if (isValidParticleIdx(m_closestParticleIdx)) {
+                m_selectedParticleIdx = m_closestParticleIdx;
+                auto &particle = gEnv->solarSystemPS.get(m_selectedParticleIdx);
+                m_Mass = particle.getMass() / 1e24L;
+                m_accelerationX = 0;
+                m_accelerationY = 0;
+                m_accelerationZ = 0;
+            }
+        }
+
+        // Create new object
+        if (m_onClickWhatToDo == 1) {
+            const bool is2d = gEnv->camera->is2d();
+            const bool is3d = gEnv->camera->is3d();
+
+            if (is2d) {
+                gEnv->solarSystemPS.add(
+                    glm::vec<3, long double>(
+                        gEnv->camera->SSToWorld2d(gEnv->stateGui->mousePos).x,
+                        gEnv->camera->SSToWorld2d(gEnv->stateGui->mousePos).y,
+                        0) /
+                        TaskSolarSystem_CopySolarSystemPSToNativePS::
+                            SCALING_FACTOR,
+                    glm::vec<3, long double>(), 1);
+            }
+            if (is3d) {
+                gEnv->solarSystemPS.add(
+                    glm::vec<3, long double>(
+                        gEnv->camera
+                            ->SSToWorld3d(gEnv->stateGui->mousePos,
+                                          glm::vec3(0.0f))
+                            .x,
+                        gEnv->camera
+                            ->SSToWorld3d(gEnv->stateGui->mousePos,
+                                          glm::vec3(0.0f))
+                            .y,
+                        gEnv->camera
+                            ->SSToWorld3d(gEnv->stateGui->mousePos,
+                                          glm::vec3(0.0f))
+                            .z) /
+                        TaskSolarSystem_CopySolarSystemPSToNativePS::
+                            SCALING_FACTOR,
+                    glm::vec<3, long double>(), 1);
+            }
+
+            m_selectedParticleIdx = gEnv->solarSystemPS.getParticleCount() - 1;
+        }
     }
 
     if (m_Mass >= 0 && isValidParticleIdx(m_selectedParticleIdx)) {
@@ -155,6 +222,9 @@ TaskSolarSystem_PickParticle::calcEscapeVelocity(SolarSystemParticle *particle,
 
 void TaskSolarSystem_PickParticle::imGui() {
 
+    ImGui::RadioButton(paramName("onClick Select"), &m_onClickWhatToDo, 0);
+    ImGui::RadioButton(paramName("onClick Create"), &m_onClickWhatToDo, 1);
+
     // Show changeble states of selected particle
     if (isValidParticleIdx(m_selectedParticleIdx)) {
 
@@ -171,7 +241,15 @@ void TaskSolarSystem_PickParticle::imGui() {
             return;
         }
 
-        ImGui::InputScalarN(paramName("Mass in 10^24 kg"), ImGuiDataType_Float, &m_Mass, 1);
+        ImGui::Separator();
+
+        ImGui::Text("Apply Acceleration in mm/s²");
+        ImGui::SliderFloat(paramName("X-Axis"), &m_accelerationX, 0, 3);
+        ImGui::SliderFloat(paramName("Y-Axis"), &m_accelerationY, 0, 3);
+        ImGui::SliderFloat(paramName("Z-Axis"), &m_accelerationZ, 0, 3);
+
+        ImGui::InputScalarN(paramName("Mass in 10^24 kg"), ImGuiDataType_Float,
+                            &m_Mass, 1);
 
         ImGui::Separator();
         ImGui::Text("Selected Particle");

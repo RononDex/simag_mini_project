@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ITask.h"
 #include "../ParticleSystem/SolarSystemParticle.h"
+#include "ITask.h"
 
 class TaskSolarSystem_PickParticle : public CTask {
   public:
@@ -25,6 +25,10 @@ class TaskSolarSystem_PickParticle : public CTask {
     int m_closestParticleIdx = -1;
     int m_selectedParticleIdx = -1;
     float m_Mass = -1;
+    float m_accelerationX = 0;
+    float m_accelerationY = 0;
+    float m_accelerationZ = 0;
+    int m_onClickWhatToDo = 0;
 
     bool m_selectedParticleStateOld = false;
 
@@ -34,5 +38,6 @@ class TaskSolarSystem_PickParticle : public CTask {
     float randomNumberInRange(float max);
 
     void deleteParticle(int idx);
-    long double calcEscapeVelocity(SolarSystemParticle *particle, long double distance);
+    long double calcEscapeVelocity(SolarSystemParticle *particle,
+                                   long double distance);
 };

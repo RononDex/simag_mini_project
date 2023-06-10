@@ -14,7 +14,8 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::findNamedParticles(
     m_particleNames.push_back("None");
     m_particleNameIndices.push_back(-1);
     for (int i = 0; i < count; i++) {
-        if (gEnv->solarSystemPS.get(i).getName() != NULL) {
+        if (gEnv->solarSystemPS.get(i).getName() != NULL &&
+            strcmp("", gEnv->solarSystemPS.get(i).getName()) != 0) {
             m_particleNameIndices.push_back(i);
             m_particleNames.push_back(gEnv->solarSystemPS.get(i).getName());
         }
@@ -47,18 +48,18 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::doWork() {
         centerPosition =
             gEnv->solarSystemPS.get(m_particleNameIndices[m_selectedCenterBody])
                 .getPosition() *
-            m_scalingFactor;
+            SCALING_FACTOR;
     }
 
     for (int i = 0; i < count; i++) {
         auto solarSystemParticle = gEnv->solarSystemPS.get(i);
 
-        positions[i] = solarSystemParticle.getPosition() * m_scalingFactor;
+        positions[i] = solarSystemParticle.getPosition() * SCALING_FACTOR;
         positions[i] -= centerPosition;
 
-        velocities[i] = solarSystemParticle.getVelocity() * m_scalingFactor;
+        velocities[i] = solarSystemParticle.getVelocity() * SCALING_FACTOR;
         colors[i] = solarSystemParticle.getColor();
-        forces[i] = solarSystemParticle.getForce() * m_scalingFactor;
+        forces[i] = solarSystemParticle.getForce() * SCALING_FACTOR;
     }
 }
 
@@ -84,3 +85,6 @@ const char *TaskSolarSystem_CopySolarSystemPSToNativePS::toString() const {
 }
 
 void TaskSolarSystem_CopySolarSystemPSToNativePS::draw() const {}
+
+const long double TaskSolarSystem_CopySolarSystemPSToNativePS::SCALING_FACTOR =
+    (long double)1 / (long double)1e9;
