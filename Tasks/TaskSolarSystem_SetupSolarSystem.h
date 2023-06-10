@@ -17,5 +17,5 @@ class TaskSolarSystem_SetupSolarSystem : public CTask {
     virtual const char *toString() const override;
 
   private:
-    void setupSolarSystem();
+    void setupSolarSystem(bool comets);
 };

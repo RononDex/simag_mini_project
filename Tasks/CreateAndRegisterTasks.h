@@ -6,6 +6,7 @@
 #include "TaskCreatePsFromImage.h"
 #include "TaskEmpty.h"
 #include "TaskEnqueuePS.h"
+#include "TaskSolarSystem_CometLoss.h"
 #include "TaskSolarSystem_CopySolarSystemPSToNativePS.h"
 #include "TaskSolarSystem_GravitationalForce.h"
 #include "TaskSolarSystem_Integrator.h"
@@ -86,6 +87,7 @@ void createTasks(App *app) {
     app->registerTask<TaskSolarSystem_SetupSolarSystem>();
     app->registerTask<TaskSolarSystem_GravitationalForce>();
     app->registerTask<TaskSolarSystem_PickParticle>();
+    app->registerTask<TaskSolarSystem_CometLoss>();
 }
 
 void setDefaultTasks(App *app) {
@@ -125,5 +127,6 @@ void setDefaultTasks(App *app) {
     app->pushDefaultTask<TaskSolarSystem_Integrator>();
     app->pushDefaultTask<TaskSolarSystem_GravitationalForce>();
     app->pushDefaultTask<TaskSolarSystem_PickParticle>();
+    app->pushDefaultTask<TaskSolarSystem_CometLoss>();
 }
 } // namespace
