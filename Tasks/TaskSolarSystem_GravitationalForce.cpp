@@ -16,7 +16,8 @@ void TaskSolarSystem_GravitationalForce::setForces() {
             // Calculate and add the gravitional force for this particle to all
             // other particles
             auto &otherParticle = gEnv->solarSystemPS.get(j);
-            if (otherParticle.getType() == Planet) {
+            if (otherParticle.getType() == Planet ||
+                otherParticle.getType() == Star) {
                 auto delta_Vector =
                     otherParticle.getPosition() - particle.getPosition();
                 auto distance_squared = glm::length2(delta_Vector);

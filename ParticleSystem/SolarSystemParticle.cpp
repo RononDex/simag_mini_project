@@ -6,6 +6,9 @@
 SolarSystemParticle::SolarSystemParticle() {}
 
 std::string SolarSystemParticle::toString() const {
+    char *type = "Planet";
+    if (this->m_type == Comet)
+        type = "Comet";
     std::stringstream ss;
     ss << "Name     :     " << this->m_name << "\n";
     ss << "Mass [kg]:     " << this->m_mass << "\n";
@@ -18,5 +21,6 @@ std::string SolarSystemParticle::toString() const {
     ss << "Force:         "
        << "X: " << (this->m_force.x) << " Y: " << (this->m_force.y)
        << " Z: " << (this->m_force.z) << "\n";
+    ss << "Type:          " << type << "\n";
     return ss.str();
 }

@@ -6,7 +6,7 @@
 #include <glm/vec3.hpp>
 #include <string>
 
-enum ParticleType { Planet, Comet };
+enum ParticleType { Star, Planet, Comet, CometFragment };
 
 class SolarSystemParticle {
   public:
