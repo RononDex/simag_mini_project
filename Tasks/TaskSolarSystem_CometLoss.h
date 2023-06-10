@@ -21,6 +21,7 @@ class TaskSolarSystem_CometLoss : public CTask {
   private:
     float m_accumulatedMassLossKg = 0;
     float m_massLossThresholdNewParticle = 50000;
+    float m_sunIntensity = 1.0;
     long double m_appliedForceOnMassLoss = 50;
 
     // Calculated through solving 1/(1AU)^2 * x = 1365
