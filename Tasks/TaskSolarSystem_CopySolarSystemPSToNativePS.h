@@ -20,6 +20,8 @@ class TaskSolarSystem_CopySolarSystemPSToNativePS : public CTask {
     virtual void imGui() override;
     virtual const char *toString() const override;
 
+    static const long double SCALING_FACTOR;
+
   private:
     int m_particleCount;
     int m_psId = 0;
@@ -27,6 +29,5 @@ class TaskSolarSystem_CopySolarSystemPSToNativePS : public CTask {
     std::vector<std::string> m_particleNames;
     // Scale rendering so that, 1 billion (10^9) km equals 1 unit
     // rendering
-    long double m_scalingFactor = (long double)1 / (long double)1e9;
     int m_selectedCenterBody = 0;
 };

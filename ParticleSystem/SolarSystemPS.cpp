@@ -33,7 +33,7 @@ void SolarSystemPS::remove(int particleIdx) {
 void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel, long double mass) {
     this->add(pos, vel, glm::vec<3, long double>(0), mass,
-              glm::vec4(1, 1, 1, 0), NULL);
+              glm::vec4(1, 1, 1, 1.0), "");
 }
 
 void SolarSystemPS::clear() {
