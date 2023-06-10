@@ -194,7 +194,7 @@ void TaskSolarSystem_PickParticle::explodeSelectedObject() {
                                      pos.z + (z_vel * move_by_dist_fact)),
             glm::vec<3, long double>(x_vel + vel.x, y_vel + vel.y,
                                      z_vel + vel.z),
-            glm::vec<3, long double>(), mass_per_particle, color, NULL);
+            glm::vec<3, long double>(), mass_per_particle, color, "");
 
         gEnv->solarSystemPS.add(
             glm::vec<3, long double>(pos.x - (x_vel * move_by_dist_fact),
@@ -202,7 +202,7 @@ void TaskSolarSystem_PickParticle::explodeSelectedObject() {
                                      pos.z - (z_vel * move_by_dist_fact)),
             glm::vec<3, long double>(-x_vel + vel.x, -y_vel + vel.y,
                                      -z_vel + vel.z),
-            glm::vec<3, long double>(), mass_per_particle, color, NULL);
+            glm::vec<3, long double>(), mass_per_particle, color, "");
     }
 }
 

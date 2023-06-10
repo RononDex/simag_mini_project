@@ -15,7 +15,8 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
                         glm::vec<3, long double> vel,
                         glm::vec<3, long double> force, long double mass,
                         glm::vec4 color,
-                        const char *name) {
+                        const char *name,
+                        ParticleType type) {
     SolarSystemParticle particle;
     particle.setForce(force);
     particle.setMass(mass);
@@ -23,7 +24,16 @@ void SolarSystemPS::add(glm::vec<3, long double> pos,
     particle.setVelocity(vel);
     particle.setColor(color);
     particle.setName(name);
+    particle.setType(type);
     this->m_particles.insert(m_particles.end(), particle);
+}
+
+void SolarSystemPS::add(glm::vec<3, long double> pos,
+                        glm::vec<3, long double> vel,
+                        glm::vec<3, long double> force, long double mass,
+                        glm::vec4 color,
+                        const char *name) {
+    this->add(pos, vel, force, mass, color, name, Planet);
 }
 
 void SolarSystemPS::remove(int particleIdx) {

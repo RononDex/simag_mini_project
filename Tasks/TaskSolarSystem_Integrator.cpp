@@ -13,11 +13,8 @@ void TaskSolarSystem_Integrator::setForces() {
             force = glm::vec<3, long double>();
         }
 
-        gEnv->solarSystemPS.getSimulationDate() += gEnv->stateSim->dt;
+        gEnv->solarSystemPS.getSimulationDate() += gEnv->stateSim->dtFixed;
     }
-
-    this->m_passNumber++;
-    this->m_passNumber = this->m_passNumber % 2;
 }
 void TaskSolarSystem_Integrator::doWork() {}
 void TaskSolarSystem_Integrator::imGui() {}
@@ -44,7 +41,7 @@ void TaskSolarSystem_Integrator::ensureSizeOfTemps() {
 
 void TaskSolarSystem_Integrator::Euler_Cromer() {
 
-    long double dt = gEnv->stateSim->dt;
+    long double dt = gEnv->stateSim->dtFixed;
     int nSize = gEnv->solarSystemPS.getParticleCount();
 
     for (int i = 0; i < nSize; i++) {
@@ -56,11 +53,9 @@ void TaskSolarSystem_Integrator::Euler_Cromer() {
         auto &m = particle.getMass();
         auto &f = particle.getForce();
 
-        if (m_passNumber == 0) {
-            // velocity-update
-            v = v + (f / m) * (dt);
-            // position-update
-            p = p + v * (dt);
-        }
+        // velocity-update
+        v = v + (f / m) * (dt);
+        // position-update
+        p = p + v * (dt);
     }
 }

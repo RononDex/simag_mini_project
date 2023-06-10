@@ -93,7 +93,7 @@ void TaskSolarSystem_SetupSolarSystem::setupSolarSystem() {
     // Uranus
     gEnv->solarSystemPS.add(glm::vec<3, long double>(2.863535123540787E+08L,
                                                      -2.885000824213084E+09L,
-                                                     -1.441960578606236E+07),
+                                                     -1.441960578606236E+07L),
                             glm::vec<3, long double>(6.715776823305395E+00L,
                                                      3.560785287875484E-01L,
                                                      -8.557523627458505E-02L),
@@ -103,12 +103,32 @@ void TaskSolarSystem_SetupSolarSystem::setupSolarSystem() {
     // Neptune
     gEnv->solarSystemPS.add(glm::vec<3, long double>(9.563524137819563E+08L,
                                                      -4.416536139446790E+09L,
-                                                     6.891211901480341E+07),
+                                                     6.891211901480341E+07L),
                             glm::vec<3, long double>(5.267418714818683E+00L,
                                                      1.180140172482391E+00L,
                                                      -1.458325266649975E-01L),
                             glm::vec<3, long double>(0), 102.409E+24L,
                             glm::vec4(1.0, 0.0, 0.5, 1.0), "Neptune");
+    
+    // Comets
+    gEnv->solarSystemPS.add(glm::vec<3, long double>(7.065479894858790E+09L,
+                                                     -1.370191175122821E+09L,
+                                                     3.905764315493397E+09L),
+                            glm::vec<3, long double>(-5.496980401281084E+00L,
+                                                     3.868906020519913E-01L,
+                                                     -1.475097652451660E+00L),
+                            glm::vec<3, long double>(0), 5E+14L,
+                            glm::vec4(1.0, 1.0, 1.0, 1.0), "C/2019 U5 (PANSTARRS)",
+                            Comet);
+    gEnv->solarSystemPS.add(glm::vec<3, long double>(5.614797167687098E+08L,
+                                                     -2.647133187338052E+09L,
+                                                     -1.279943484903962E+09L),
+                            glm::vec<3, long double>(-1.484864081554863E+00L,
+                                                     7.143541957203626E+00L,
+                                                     5.674468846418449E+00L),
+                            glm::vec<3, long double>(0), 5E+14L,
+                            glm::vec4(1.0, 1.0, 1.0, 1.0), "C/1995 O1 (Hale-Bopp)",
+                            Comet);
 
     // Activate simulation
     gEnv->stateSim->isRunning = true;
