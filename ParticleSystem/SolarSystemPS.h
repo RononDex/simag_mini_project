@@ -19,6 +19,9 @@ class SolarSystemPS {
              glm::vec<3, long double> force, long double mass, glm::vec4 color,
              const char *name);
     void add(glm::vec<3, long double> pos, glm::vec<3, long double> vel,
+             glm::vec<3, long double> force, long double mass, glm::vec4 color,
+             const char *name, ParticleType type);
+    void add(glm::vec<3, long double> pos, glm::vec<3, long double> vel,
              long double mass);
     void clear();
     time_t &getSimulationDate() { return m_simulationDateAndTime; }

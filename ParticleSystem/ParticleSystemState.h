@@ -1,62 +1,60 @@
 #pragma once
 
-#include "ParticleSystem.h"
 #include "../Helper/HelperReadPLY.h"
+#include "ParticleSystem.h"
 
-class ParticleSystemState
-{
-public:
+class ParticleSystemState {
+  public:
+    ParticleSystemState();
 
-	ParticleSystemState();
+    ParticleSystem &particleSystem() { return ps; }
+    ParticleSystem const &particleSystem() const { return ps; }
 
-	ParticleSystem& particleSystem() { return ps; }
-	ParticleSystem const& particleSystem() const { return ps; }
+    void update(); // update stream
+    void drawPsWithCurrentStyle() const;
+    void imGui(std::string const &pre);
 
-	void update(); // update stream
-	void drawPsWithCurrentStyle() const;
-	void imGui(std::string const& pre);
+    bool simulate() const { return m_bSimulate; }
+    void setSimulate(bool simulate) { m_bSimulate = simulate; }
 
-	bool simulate() const { return m_bSimulate; }
-	void setSimulate(bool simulate) { m_bSimulate = simulate; }
+    std::string toString() const; // all info/statistics about content in string
 
-	std::string toString() const; // all info/statistics about content in string
+  private:
+    ParticleSystem ps;
 
-private:
+    bool m_bSimulate = true;
 
-	ParticleSystem ps;
+    bool m_bDraw = true;
+    bool m_bDrawPoints = true;
+    bool m_bDrawVelocities = false;
+    bool m_bDrawForces = false;
+    bool m_bDrawNeighbors = false;
 
-	bool m_bSimulate = true;
+    bool m_bShowPsInfo = false;
 
-	bool m_bDraw = true;
-	bool m_bDrawPoints = true;
-	bool m_bDrawVelocities = false;
-	bool m_bDrawForces = false;
-	bool m_bDrawNeighbors = false;
+    // Color
+    bool m_bForceSingleColor = false;
+    glm::vec4 m_forceColor = {0, 1, 0, 1};
 
-	bool m_bShowPsInfo = false;
+    // 0 none
+    // 1 none but load once from file single capture
+    // 2 from file loop
+    // 3 from file loop range
+    // 4 from single capture-file
+    int m_updateStyle = 0;
 
-	// Color
-	bool m_bForceSingleColor = false;
-	glm::vec4 m_forceColor = { 0,1,0,1 };
+    // draw
+    bool m_bOverrideGlobalDrawSettings = false;
+    float m_psPointSize = 2.0f;
 
-	// 0 none
-	// 1 none but load once from file single capture
-	// 2 from file loop
-	// 3 from file loop range
-	// 4 from single capture-file 
-	int m_updateStyle = 0;
+    // file loop range from stream
+    int m_fileLoopRangeMin = 0;
+    int m_fileLoopRangeMax = 1;
+    int m_fileLoopRangeActualStart = 0;
+    int m_fileLoopRangeActualEnd = 1;
+    bool m_bFixRangeMinMax =
+        false; // if fixed, start&end are set equal (to start) => start slider
+               // can be used to run through frames
 
-	// draw
-	bool m_bOverrideGlobalDrawSettings = false;
-	float m_psPointSize = 2.0f;
-
-	// file loop range from stream
-	int m_fileLoopRangeMin = 0;
-	int m_fileLoopRangeMax = 1;
-	int m_fileLoopRangeActualStart = 0;
-	int m_fileLoopRangeActualEnd = 1;
-	bool m_bFixRangeMinMax = false; // if fixed, start&end are set equal (to start) => start slider can be used to run through frames
-
-	Helper::ReadFromFilestream m_readFromFilestream;
-
+    Helper::ReadFromFilestream m_readFromFilestream;
 };

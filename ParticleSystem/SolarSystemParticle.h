@@ -6,6 +6,8 @@
 #include <glm/vec3.hpp>
 #include <string>
 
+enum ParticleType { Planet, Comet };
+
 class SolarSystemParticle {
   public:
     SolarSystemParticle();
@@ -29,6 +31,9 @@ class SolarSystemParticle {
     void setName(const char *name) { this->m_name = name; }
     const char *getName() { return this->m_name; }
 
+    ParticleType getType() { return this->m_type; }
+    void setType(ParticleType newType) { this->m_type = newType; }
+
     std::string toString() const;
 
   private:
@@ -38,4 +43,5 @@ class SolarSystemParticle {
     glm::vec<3, long double> m_vel;
     glm::vec<3, long double> m_force;
     glm::vec4 m_color;
+    ParticleType m_type = Planet;
 };

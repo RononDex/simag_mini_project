@@ -16,15 +16,17 @@ void TaskSolarSystem_GravitationalForce::setForces() {
             // Calculate and add the gravitional force for this particle to all
             // other particles
             auto &otherParticle = gEnv->solarSystemPS.get(j);
-            auto delta_Vector =
-                otherParticle.getPosition() - particle.getPosition();
-            auto distance_squared = glm::length2(delta_Vector);
+            if (otherParticle.getType() == Planet) {
+                auto delta_Vector =
+                    otherParticle.getPosition() - particle.getPosition();
+                auto distance_squared = glm::length2(delta_Vector);
 
-            auto F_G = delta_Vector / std::sqrt(distance_squared) *
-                       particle.getMass() * otherParticle.getMass() *
-                       m_gravityConstant / distance_squared;
+                auto F_G = delta_Vector / std::sqrt(distance_squared) *
+                           particle.getMass() * otherParticle.getMass() *
+                           m_gravityConstant / distance_squared;
 
-            particle.getForce() += F_G;
+                particle.getForce() += F_G;
+            }
         }
     }
 }
