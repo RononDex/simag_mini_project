@@ -2,6 +2,7 @@
 #include "../Context/GlobalEnvironment.h"
 #include "glm/geometric.hpp"
 #include "glm/gtx/quaternion.hpp"
+#include "imgui/imgui.h"
 #include <iostream>
 #include <sstream>
 #include <type_traits>
@@ -22,8 +23,8 @@ void TaskSolarSystem_CometLoss::setForces() {
                     // Light Intensity follows the inversed square law (falls of
                     // with distance squared)
                     // At ~1AU it should be around 1365 W/m² for our sun
-                    auto intensity =
-                        1 / std::pow(distance, 2) * m_intensityConstant;
+                    auto intensity = 1 / std::pow(distance, 2) *
+                                     m_intensityConstant * m_sunIntensity;
 
                     auto materialLossInKg = intensity * m_massToIntensityRatio *
                                             (gEnv->stateSim->dt / 3600);
@@ -53,7 +54,10 @@ void TaskSolarSystem_CometLoss::setForces() {
     }
 }
 void TaskSolarSystem_CometLoss::doWork() {}
-void TaskSolarSystem_CometLoss::imGui() {}
+void TaskSolarSystem_CometLoss::imGui() {
+    ImGui::SliderFloat(paramName("Sun Radiation Intensity"), &m_sunIntensity,
+                       0.0, 10);
+}
 const char *TaskSolarSystem_CometLoss::toString() const {
     std::stringstream ss;
     ss << "Description:"
