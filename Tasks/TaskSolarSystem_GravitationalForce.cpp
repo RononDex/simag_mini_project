@@ -13,7 +13,7 @@ void TaskSolarSystem_GravitationalForce::setForces() {
             if (j == i)
                 continue;
 
-            // Calculate and add the gravitional force for this particle to all
+            // Calculate and add the gravitational force for this particle to all
             // other particles
             auto &otherParticle = gEnv->solarSystemPS.get(j);
             if (otherParticle.getType() == Planet ||
