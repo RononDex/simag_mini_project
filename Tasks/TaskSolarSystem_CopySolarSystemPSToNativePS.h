@@ -4,6 +4,8 @@
 #include <map>
 
 #include "ITask.h"
+#include "glm/detail/qualifier.hpp"
+#include "glm/ext/vector_float3.hpp"
 
 class TaskSolarSystem_CopySolarSystemPSToNativePS : public CTask {
   public:
@@ -21,6 +23,7 @@ class TaskSolarSystem_CopySolarSystemPSToNativePS : public CTask {
     virtual const char *toString() const override;
 
     static const long double SCALING_FACTOR;
+    static glm::vec3 center;
 
   private:
     int m_particleCount;

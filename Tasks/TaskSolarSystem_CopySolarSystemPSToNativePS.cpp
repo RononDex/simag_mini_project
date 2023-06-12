@@ -1,5 +1,6 @@
 #include "TaskSolarSystem_CopySolarSystemPSToNativePS.h"
 #include "../Context/GlobalEnvironment.h"
+#include "glm/detail/qualifier.hpp"
 #include "glm/ext/vector_float3.hpp"
 #include "imgui/imgui.h"
 #include <cstring>
@@ -41,11 +42,11 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::doWork() {
     auto &forces = ps.forces();
     auto &positions = ps.positions();
     auto &velocities = ps.velocities();
-    auto centerPosition = glm::vec3(0);
+    TaskSolarSystem_CopySolarSystemPSToNativePS::center = glm::vec3(0);
 
     if (m_selectedCenterBody > 0 &&
         m_selectedCenterBody < m_particleNameIndices.size()) {
-        centerPosition =
+        TaskSolarSystem_CopySolarSystemPSToNativePS::center =
             gEnv->solarSystemPS.get(m_particleNameIndices[m_selectedCenterBody])
                 .getPosition() *
             SCALING_FACTOR;
@@ -55,7 +56,7 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::doWork() {
         auto solarSystemParticle = gEnv->solarSystemPS.get(i);
 
         positions[i] = solarSystemParticle.getPosition() * SCALING_FACTOR;
-        positions[i] -= centerPosition;
+        positions[i] -= TaskSolarSystem_CopySolarSystemPSToNativePS::center;
 
         velocities[i] = solarSystemParticle.getVelocity() * SCALING_FACTOR;
         colors[i] = solarSystemParticle.getColor();
@@ -68,8 +69,8 @@ void TaskSolarSystem_CopySolarSystemPSToNativePS::imGui() {
     for (std::string const &str : m_particleNames) {
         names.push_back(str.data());
     }
-    ImGui::Combo("ChooseCenteredObject", &m_selectedCenterBody, names.data(),
-                 m_particleNames.size());
+    ImGui::Combo(paramName("Centered Object"), &m_selectedCenterBody,
+                 names.data(), m_particleNames.size());
 }
 
 const char *TaskSolarSystem_CopySolarSystemPSToNativePS::toString() const {
@@ -86,5 +87,6 @@ const char *TaskSolarSystem_CopySolarSystemPSToNativePS::toString() const {
 
 void TaskSolarSystem_CopySolarSystemPSToNativePS::draw() const {}
 
+glm::vec3 TaskSolarSystem_CopySolarSystemPSToNativePS::center = glm::vec3(0);
 const long double TaskSolarSystem_CopySolarSystemPSToNativePS::SCALING_FACTOR =
     (long double)1 / (long double)1e9;

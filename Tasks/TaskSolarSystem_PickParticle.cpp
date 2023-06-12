@@ -113,9 +113,14 @@ void TaskSolarSystem_PickParticle::doWork() {
             if (is2d) {
                 gEnv->solarSystemPS.add(
                     glm::vec<3, long double>(
-                        gEnv->camera->SSToWorld2d(gEnv->stateGui->mousePos).x,
-                        gEnv->camera->SSToWorld2d(gEnv->stateGui->mousePos).y,
-                        0) /
+                        gEnv->camera->SSToWorld2d(gEnv->stateGui->mousePos).x +
+                            TaskSolarSystem_CopySolarSystemPSToNativePS::center
+                                .x,
+                        gEnv->camera->SSToWorld2d(gEnv->stateGui->mousePos).y +
+                            TaskSolarSystem_CopySolarSystemPSToNativePS::center
+                                .y,
+                        +TaskSolarSystem_CopySolarSystemPSToNativePS::center
+                             .z) /
                         TaskSolarSystem_CopySolarSystemPSToNativePS::
                             SCALING_FACTOR,
                     glm::vec<3, long double>(), 1);
@@ -124,17 +129,23 @@ void TaskSolarSystem_PickParticle::doWork() {
                 gEnv->solarSystemPS.add(
                     glm::vec<3, long double>(
                         gEnv->camera
-                            ->SSToWorld3d(gEnv->stateGui->mousePos,
-                                          glm::vec3(0.0f))
-                            .x,
+                                ->SSToWorld3d(gEnv->stateGui->mousePos,
+                                              glm::vec3(0.0f))
+                                .x +
+                            TaskSolarSystem_CopySolarSystemPSToNativePS::center
+                                .x,
                         gEnv->camera
-                            ->SSToWorld3d(gEnv->stateGui->mousePos,
-                                          glm::vec3(0.0f))
-                            .y,
+                                ->SSToWorld3d(gEnv->stateGui->mousePos,
+                                              glm::vec3(0.0f))
+                                .y +
+                            TaskSolarSystem_CopySolarSystemPSToNativePS::center
+                                .y,
                         gEnv->camera
-                            ->SSToWorld3d(gEnv->stateGui->mousePos,
-                                          glm::vec3(0.0f))
-                            .z) /
+                                ->SSToWorld3d(gEnv->stateGui->mousePos,
+                                              glm::vec3(0.0f))
+                                .z +
+                            TaskSolarSystem_CopySolarSystemPSToNativePS::center
+                                .z) /
                         TaskSolarSystem_CopySolarSystemPSToNativePS::
                             SCALING_FACTOR,
                     glm::vec<3, long double>(), 1);
