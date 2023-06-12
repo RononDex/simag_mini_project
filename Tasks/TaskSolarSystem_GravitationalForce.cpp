@@ -37,7 +37,7 @@ const char *TaskSolarSystem_GravitationalForce::toString() const {
     std::stringstream ss;
     ss << "Description:"
        << "\n";
-    ss << "Integrator for the high precision SolarSystemPS"
+    ss << "Simulates the gravitional forces between all the particles"
        << "\n";
 
     m_string = ss.str();
